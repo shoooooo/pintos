@@ -1,4 +1,13 @@
-TOTAL TESTING SCORE: 24.2%
+warning: tests/threads/mlfqs-load-1 not tested, assuming failure
+warning: tests/threads/mlfqs-load-60 not tested, assuming failure
+warning: tests/threads/mlfqs-load-avg not tested, assuming failure
+warning: tests/threads/mlfqs-recent-1 not tested, assuming failure
+warning: tests/threads/mlfqs-fair-2 not tested, assuming failure
+warning: tests/threads/mlfqs-fair-20 not tested, assuming failure
+warning: tests/threads/mlfqs-nice-2 not tested, assuming failure
+warning: tests/threads/mlfqs-nice-10 not tested, assuming failure
+warning: tests/threads/mlfqs-block not tested, assuming failure
+TOTAL TESTING SCORE: 4.4%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -6,11 +15,11 @@ SUMMARY BY TEST SET
 
 Test Set                                      Pts Max  % Ttl  % Max
 --------------------------------------------- --- --- ------ ------
-tests/threads/Rubric.alarm                     14/ 18  15.6%/ 20.0%
+tests/threads/Rubric.alarm                      4/ 18   4.4%/ 20.0%
 tests/threads/Rubric.priority                   0/ 38   0.0%/ 40.0%
-tests/threads/Rubric.mlfqs                      8/ 37   8.6%/ 40.0%
+tests/threads/Rubric.mlfqs                      0/ 37   0.0%/ 40.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                  24.2%/100.0%
+Total                                                   4.4%/100.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -18,16 +27,16 @@ SUMMARY OF INDIVIDUAL TESTS
 
 Functionality and robustness of alarm clock (tests/threads/Rubric.alarm):
 	     4/ 4 tests/threads/alarm-single
-	     4/ 4 tests/threads/alarm-multiple
-	     4/ 4 tests/threads/alarm-simultaneous
+	  ** 0/ 4 tests/threads/alarm-multiple
+	  ** 0/ 4 tests/threads/alarm-simultaneous
 	  ** 0/ 4 tests/threads/alarm-priority
 
-	     1/ 1 tests/threads/alarm-zero
-	     1/ 1 tests/threads/alarm-negative
+	  ** 0/ 1 tests/threads/alarm-zero
+	  ** 0/ 1 tests/threads/alarm-negative
 
 	- Section summary.
-	      5/  6 tests passed
-	     14/ 18 points subtotal
+	      1/  6 tests passed
+	      4/ 18 points subtotal
 
 Functionality of priority scheduler (tests/threads/Rubric.priority):
 	  ** 0/ 3 tests/threads/priority-change
@@ -56,8 +65,8 @@ Functionality of advanced scheduler (tests/threads/Rubric.mlfqs):
 
 	  ** 0/ 5 tests/threads/mlfqs-recent-1
 
-	     5/ 5 tests/threads/mlfqs-fair-2
-	     3/ 3 tests/threads/mlfqs-fair-20
+	  ** 0/ 5 tests/threads/mlfqs-fair-2
+	  ** 0/ 3 tests/threads/mlfqs-fair-20
 
 	  ** 0/ 4 tests/threads/mlfqs-nice-2
 	  ** 0/ 2 tests/threads/mlfqs-nice-10
@@ -65,9 +74,311 @@ Functionality of advanced scheduler (tests/threads/Rubric.mlfqs):
 	  ** 0/ 5 tests/threads/mlfqs-block
 
 	- Section summary.
-	      2/  9 tests passed
-	      8/ 37 points subtotal
+	      0/  9 tests passed
+	      0/ 37 points subtotal
 
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/alarm-multiple FAILURE:
+
+Kernel panic in run: PANIC at ../../tests/threads/tests.c:99 in fail(): test failed
+Call stack: 0xc0028419 0xc002a2f5 0xc002a6c6 0xc002a751 0xc002a33b 0xc00207d1 0xc0020771
+Translation of call stack:
+0xc0028419: debug_panic (.../../lib/kernel/debug.c:38)
+0xc002a2f5: run_test (.../tests/threads/tests.c:54)
+0xc002a6c6: test_sleep (.../threads/alarm-wait.c:105)
+0xc002a751: test_alarm_multiple (...s/threads/alarm-wait.c:25)
+0xc002a33b: run_test (.../tests/threads/tests.c:63)
+0xc00207d1: run_task (.../../../threads/init.c:292)
+0xc0020771: run_actions (.../../../threads/init.c:341)
+
+OUTPUT FROM tests/threads/alarm-multiple:
+
+PiLo hda1
+Loading........
+Kernel command line: -q run alarm-multiple
+Pintos booting with 4,096 kB RAM...
+383 pages available in kernel pool.
+383 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+Boot complete.
+Executing 'alarm-multiple':
+(alarm-multiple) begin
+(alarm-multiple) Creating 5 threads to sleep 7 times each.
+(alarm-multiple) Thread 0 sleeps 10 ticks each time,
+(alarm-multiple) thread 1 sleeps 20 ticks each time, and so on.
+(alarm-multiple) If successful, product of iteration count and
+(alarm-multiple) sleep duration will appear in nondescending order.
+(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 175
+
+(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 205
+
+(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 215
+
+(alarm-multiple) a thread goes to sleep : main it will wake up at 634
+
+(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 185
+
+(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 195
+
+(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 185
+
+(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 195
+
+(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 205
+
+(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 215
+
+(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 225
+
+(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 235
+
+(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 265
+
+(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 225
+
+(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 255
+
+(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 285
+
+(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 315
+
+(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 245
+
+(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 285
+
+(alarm-multiple) (alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 315
+
+(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 365
+
+(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 205
+
+(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 225
+
+(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 245
+
+(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 265
+
+(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 285
+
+(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 305
+
+a thread goes to sleep : thread 3 it will wake up at 325
+
+(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 365
+
+(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 405
+
+(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 445
+
+(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 345
+
+(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 375
+
+(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 415
+
+(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 465
+
+(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 515
+
+(alarm-multiple) thread 0: duration=10, iteration=1, product=10
+(alarm-multiple) thread 0: duration=10, iteration=2, product=20
+(alarm-multiple) thread 1: duration=20, iteration=1, product=20
+(alarm-multiple) thread 2: duration=30, iteration=1, product=30
+(alarm-multiple) thread 0: duration=10, iteration=3, product=30
+(alarm-multiple) thread 3: duration=40, iteration=1, product=40
+(alarm-multiple) thread 0: duration=10, iteration=4, product=40
+(alarm-multiple) thread 4: duration=50, iteration=1, product=50
+(alarm-multiple) thread 0: duration=10, iteration=5, product=50
+(alarm-multiple) thread 0: duration=10, iteration=6, product=60
+(alarm-multiple) thread 0: duration=10, iteration=7, product=70
+(alarm-multiple) thread 2: duration=30, iteration=2, product=60
+(alarm-multiple) FAIL: thread 2 woke up out of order (70 > 60)!
+Kernel PANIC at ../../tests/threads/tests.c:99 in fail(): test failed
+Call stack: 0xc0028419 0xc002a2f5 0xc002a6c6 0xc002a751 0xc002a33b 0xc00207d1 0xc0020771.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 739 ticks
+Thread: 0 idle ticks, 739 kernel ticks, 0 user ticks
+Console: 4473 characters output
+Keyboard: 0 keys pressed
+Powering off..
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/alarm-simultaneous FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (alarm-simultaneous) begin
+  (alarm-simultaneous) Creating 3 threads to sleep 5 times each.
+  (alarm-simultaneous) Each thread sleeps 10 ticks each time.
+  (alarm-simultaneous) Within an iteration, all threads should wake up on the same tick.
+  (alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
+  (alarm-simultaneous) iteration 0, thread 1: woke up 0 ticks later
+  (alarm-simultaneous) iteration 0, thread 2: woke up 0 ticks later
+  (alarm-simultaneous) iteration 1, thread 0: woke up 10 ticks later
+  (alarm-simultaneous) iteration 1, thread 1: woke up 0 ticks later
+  (alarm-simultaneous) iteration 1, thread 2: woke up 0 ticks later
+  (alarm-simultaneous) iteration 2, thread 0: woke up 10 ticks later
+  (alarm-simultaneous) iteration 2, thread 1: woke up 0 ticks later
+  (alarm-simultaneous) iteration 2, thread 2: woke up 0 ticks later
+  (alarm-simultaneous) iteration 3, thread 0: woke up 10 ticks later
+  (alarm-simultaneous) iteration 3, thread 1: woke up 0 ticks later
+  (alarm-simultaneous) iteration 3, thread 2: woke up 0 ticks later
+  (alarm-simultaneous) iteration 4, thread 0: woke up 10 ticks later
+  (alarm-simultaneous) iteration 4, thread 1: woke up 0 ticks later
+  (alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
+  (alarm-simultaneous) end
+Differences in `diff -u' format:
+  (alarm-simultaneous) begin
+  (alarm-simultaneous) Creating 3 threads to sleep 5 times each.
+  (alarm-simultaneous) Each thread sleeps 10 ticks each time.
+  (alarm-simultaneous) Within an iteration, all threads should wake up on the same tick.
++ (alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 58
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 164
++ 
++ (alarm-simultaneous) a thread goes to sleep : main it will wake up at 314
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 69
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 164
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 69
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 164
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 174
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 174
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 174
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 184
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 184
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 184
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 194
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 194
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 194
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 204
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 204
++ 
++ (alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 204
++ 
+  (alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
+  (alarm-simultaneous) iteration 0, thread 1: woke up 0 ticks later
+  (alarm-simultaneous) iteration 0, thread 2: woke up 0 ticks later
+- (alarm-simultaneous) iteration 1, thread 0: woke up 10 ticks later
+- (alarm-simultaneous) iteration 1, thread 1: woke up 0 ticks later
+- (alarm-simultaneous) iteration 1, thread 2: woke up 0 ticks later
+- (alarm-simultaneous) iteration 2, thread 0: woke up 10 ticks later
+- (alarm-simultaneous) iteration 2, thread 1: woke up 0 ticks later
+- (alarm-simultaneous) iteration 2, thread 2: woke up 0 ticks later
+- (alarm-simultaneous) iteration 3, thread 0: woke up 10 ticks later
+- (alarm-simultaneous) iteration 3, thread 1: woke up 0 ticks later
+- (alarm-simultaneous) iteration 3, thread 2: woke up 0 ticks later
+- (alarm-simultaneous) iteration 4, thread 0: woke up 10 ticks later
+- (alarm-simultaneous) iteration 4, thread 1: woke up 0 ticks later
+- (alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
++ (alarm-simultaneous) iteration 1, thread 0: woke up 11 ticks later
++ (alarm-simultaneous) iteration 1, thread 1: woke up 11 ticks later
++ (alarm-simultaneous) iteration 1, thread 2: woke up 11 ticks later
++ (alarm-simultaneous) iteration 2, thread 0: woke up 11 ticks later
++ (alarm-simultaneous) iteration 2, thread 1: woke up 11 ticks later
++ (alarm-simultaneous) iteration 2, thread 2: woke up 11 ticks later
++ (alarm-simultaneous) iteration 3, thread 0: woke up 11 ticks later
++ (alarm-simultaneous) iteration 3, thread 1: woke up 11 ticks later
++ (alarm-simultaneous) iteration 3, thread 2: woke up 12 ticks later
++ (alarm-simultaneous) iteration 4, thread 0: woke up 11 ticks later
++ (alarm-simultaneous) iteration 4, thread 1: woke up 12 ticks later
++ (alarm-simultaneous) iteration 4, thread 2: woke up 13 ticks later
+  (alarm-simultaneous) end
+
+OUTPUT FROM tests/threads/alarm-simultaneous:
+
+PiLo hda1
+Loading........
+Kernel command line: -q run alarm-simultaneous
+Pintos booting with 4,096 kB RAM...
+383 pages available in kernel pool.
+383 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+Boot complete.
+Executing 'alarm-simultaneous':
+(alarm-simultaneous) begin
+(alarm-simultaneous) Creating 3 threads to sleep 5 times each.
+(alarm-simultaneous) Each thread sleeps 10 ticks each time.
+(alarm-simultaneous) Within an iteration, all threads should wake up on the same tick.
+(alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 58
+
+(alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 164
+
+(alarm-simultaneous) a thread goes to sleep : main it will wake up at 314
+
+(alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 69
+
+(alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 164
+
+(alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 69
+
+(alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 164
+
+(alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 174
+
+(alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 174
+
+(alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 174
+
+(alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 184
+
+(alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 184
+
+(alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 184
+
+(alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 194
+
+(alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 194
+
+(alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 194
+
+(alarm-simultaneous) a thread goes to sleep : thread 0 it will wake up at 204
+
+(alarm-simultaneous) a thread goes to sleep : thread 2 it will wake up at 204
+
+(alarm-simultaneous) a thread goes to sleep : thread 1 it will wake up at 204
+
+(alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
+(alarm-simultaneous) iteration 0, thread 1: woke up 0 ticks later
+(alarm-simultaneous) iteration 0, thread 2: woke up 0 ticks later
+(alarm-simultaneous) iteration 1, thread 0: woke up 11 ticks later
+(alarm-simultaneous) iteration 1, thread 1: woke up 11 ticks later
+(alarm-simultaneous) iteration 1, thread 2: woke up 11 ticks later
+(alarm-simultaneous) iteration 2, thread 0: woke up 11 ticks later
+(alarm-simultaneous) iteration 2, thread 1: woke up 11 ticks later
+(alarm-simultaneous) iteration 2, thread 2: woke up 11 ticks later
+(alarm-simultaneous) iteration 3, thread 0: woke up 11 ticks later
+(alarm-simultaneous) iteration 3, thread 1: woke up 11 ticks later
+(alarm-simultaneous) iteration 3, thread 2: woke up 12 ticks later
+(alarm-simultaneous) iteration 4, thread 0: woke up 11 ticks later
+(alarm-simultaneous) iteration 4, thread 1: woke up 12 ticks later
+(alarm-simultaneous) iteration 4, thread 2: woke up 13 ticks later
+(alarm-simultaneous) end
+Execution of 'alarm-simultaneous' complete.
+Timer: 451 ticks
+Thread: 0 idle ticks, 454 kernel ticks, 0 user ticks
+Console: 3112 characters output
+Keyboard: 0 keys pressed
+Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -92,24 +403,47 @@ Differences in `diff -u' format:
   (alarm-priority) begin
 - (alarm-priority) Thread priority 30 woke up.
 - (alarm-priority) Thread priority 29 woke up.
-  (alarm-priority) Thread priority 28 woke up.
-  (alarm-priority) Thread priority 27 woke up.
-+ (alarm-priority) Thread priority 24 woke up.
-+ (alarm-priority) Thread priority 21 woke up.
+- (alarm-priority) Thread priority 28 woke up.
+- (alarm-priority) Thread priority 27 woke up.
++ (alarm-priority) a thread goes to sleep : priority 25 it will wake up at 526
++ 
++ (alarm-priority) a thread goes to sleep : priority 30 it will wake up at 526
++ 
++ (alarm-priority) a thread goes to sleep : priority 24 it will wake up at 526
++ 
++ (alarm-priority) a thread goes to sleep : priority 22 it will wake up at 526
++ 
++ (alarm-priority) a thread goes to sleep : priority 27 it will wake up at 526
++ 
++ (alarm-priority) a thread goes to sleep : priority 23 it will wake up at 526
++ 
++ (alarm-priority) a thread goes to sleep : priority 26 it will wake up at 526
++ 
++ (alarm-priority) a thread goes to sleep : priority 28 it will wake up at 526
++ 
++ (alarm-priority) a thread goes to sleep : priority 29 it will wake up at 526
++ 
++ (alarm-priority) a thread goes to sleep : priority 21 it will wake up at 526
++ 
   (alarm-priority) Thread priority 26 woke up.
-+ (alarm-priority) Thread priority 30 woke up.
-  (alarm-priority) Thread priority 25 woke up.
+- (alarm-priority) Thread priority 25 woke up.
 - (alarm-priority) Thread priority 24 woke up.
-+ (alarm-priority) Thread priority 29 woke up.
   (alarm-priority) Thread priority 23 woke up.
-  (alarm-priority) Thread priority 22 woke up.
-- (alarm-priority) Thread priority 21 woke up.
+- (alarm-priority) Thread priority 22 woke up.
++ (alarm-priority) Thread priority 24 woke up.
+  (alarm-priority) Thread priority 21 woke up.
++ (alarm-priority) Thread priority 27 woke up.
++ (alarm-priority) Thread priority 25 woke up.
++ (alarm-priority) Thread priority 22 woke up.
++ (alarm-priority) Thread priority 28 woke up.
++ (alarm-priority) Thread priority 30 woke up.
++ (alarm-priority) Thread priority 29 woke up.
   (alarm-priority) end
 
 OUTPUT FROM tests/threads/alarm-priority:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run alarm-priority
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -118,21 +452,121 @@ Calibrating timer...  204,600 loops/s.
 Boot complete.
 Executing 'alarm-priority':
 (alarm-priority) begin
-(alarm-priority) Thread priority 28 woke up.
-(alarm-priority) Thread priority 27 woke up.
+(alarm-priority) a thread goes to sleep : priority 25 it will wake up at 526
+
+(alarm-priority) a thread goes to sleep : priority 30 it will wake up at 526
+
+(alarm-priority) a thread goes to sleep : priority 24 it will wake up at 526
+
+(alarm-priority) a thread goes to sleep : priority 22 it will wake up at 526
+
+(alarm-priority) a thread goes to sleep : priority 27 it will wake up at 526
+
+(alarm-priority) a thread goes to sleep : priority 23 it will wake up at 526
+
+(alarm-priority) a thread goes to sleep : priority 26 it will wake up at 526
+
+(alarm-priority) a thread goes to sleep : priority 28 it will wake up at 526
+
+(alarm-priority) a thread goes to sleep : priority 29 it will wake up at 526
+
+(alarm-priority) a thread goes to sleep : priority 21 it will wake up at 526
+
+(alarm-priority) Thread priority 26 woke up.
+(alarm-priority) Thread priority 23 woke up.
 (alarm-priority) Thread priority 24 woke up.
 (alarm-priority) Thread priority 21 woke up.
-(alarm-priority) Thread priority 26 woke up.
-(alarm-priority) Thread priority 30 woke up.
+(alarm-priority) Thread priority 27 woke up.
 (alarm-priority) Thread priority 25 woke up.
-(alarm-priority) Thread priority 29 woke up.
-(alarm-priority) Thread priority 23 woke up.
 (alarm-priority) Thread priority 22 woke up.
+(alarm-priority) Thread priority 28 woke up.
+(alarm-priority) Thread priority 30 woke up.
+(alarm-priority) Thread priority 29 woke up.
 (alarm-priority) end
 Execution of 'alarm-priority' complete.
-Timer: 607 ticks
-Thread: 0 idle ticks, 610 kernel ticks, 0 user ticks
-Console: 835 characters output
+Timer: 606 ticks
+Thread: 0 idle ticks, 609 kernel ticks, 0 user ticks
+Console: 1615 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/alarm-zero FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (alarm-zero) begin
+  (alarm-zero) PASS
+  (alarm-zero) end
+Differences in `diff -u' format:
+  (alarm-zero) begin
++ (alarm-zero) a thread goes to sleep : main it will wake up at 25
++ 
+  (alarm-zero) PASS
+  (alarm-zero) end
+
+OUTPUT FROM tests/threads/alarm-zero:
+
+PiLo hda1
+Loading........
+Kernel command line: -q run alarm-zero
+Pintos booting with 4,096 kB RAM...
+383 pages available in kernel pool.
+383 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+Boot complete.
+Executing 'alarm-zero':
+(alarm-zero) begin
+(alarm-zero) a thread goes to sleep : main it will wake up at 25
+
+(alarm-zero) PASS
+(alarm-zero) end
+Execution of 'alarm-zero' complete.
+Timer: 47 ticks
+Thread: 0 idle ticks, 49 kernel ticks, 0 user ticks
+Console: 447 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/alarm-negative FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (alarm-negative) begin
+  (alarm-negative) PASS
+  (alarm-negative) end
+Differences in `diff -u' format:
+  (alarm-negative) begin
++ (alarm-negative) a thread goes to sleep : main it will wake up at -74
++ 
+  (alarm-negative) PASS
+  (alarm-negative) end
+
+OUTPUT FROM tests/threads/alarm-negative:
+
+PiLo hda1
+Loading........
+Kernel command line: -q run alarm-negative
+Pintos booting with 4,096 kB RAM...
+383 pages available in kernel pool.
+383 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+Boot complete.
+Executing 'alarm-negative':
+(alarm-negative) begin
+(alarm-negative) a thread goes to sleep : main it will wake up at -74
+
+(alarm-negative) PASS
+(alarm-negative) end
+Execution of 'alarm-negative' complete.
+Timer: 49 ticks
+Thread: 0 idle ticks, 52 kernel ticks, 0 user ticks
+Console: 476 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -162,7 +596,7 @@ Differences in `diff -u' format:
 OUTPUT FROM tests/threads/priority-change:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-change
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -212,7 +646,7 @@ Differences in `diff -u' format:
 OUTPUT FROM tests/threads/priority-preempt:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-preempt
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -239,7 +673,7 @@ First iteration does not list all threads 0...15
 OUTPUT FROM tests/threads/priority-fifo:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-fifo
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -330,7 +764,7 @@ Differences in `diff -u' format:
 OUTPUT FROM tests/threads/priority-sema:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-sema
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -437,7 +871,7 @@ Differences in `diff -u' format:
 OUTPUT FROM tests/threads/priority-condvar:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-condvar
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -508,7 +942,7 @@ Differences in `diff -u' format:
 OUTPUT FROM tests/threads/priority-donate-one:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-donate-one
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -568,7 +1002,7 @@ Differences in `diff -u' format:
 OUTPUT FROM tests/threads/priority-donate-multiple:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-donate-multiple
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -630,7 +1064,7 @@ Differences in `diff -u' format:
 OUTPUT FROM tests/threads/priority-donate-multiple2:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-donate-multiple2
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -692,7 +1126,7 @@ Differences in `diff -u' format:
 OUTPUT FROM tests/threads/priority-donate-nest:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-donate-nest
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -816,7 +1250,7 @@ Differences in `diff -u' format:
 OUTPUT FROM tests/threads/priority-donate-chain:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-donate-chain
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -877,7 +1311,7 @@ Differences in `diff -u' format:
 OUTPUT FROM tests/threads/priority-donate-sema:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-donate-sema
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -930,7 +1364,7 @@ Differences in `diff -u' format:
 OUTPUT FROM tests/threads/priority-donate-lower:
 
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run priority-donate-lower
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -957,12 +1391,12 @@ Powering off...
 DETAILS OF tests/threads/mlfqs-load-1 FAILURE:
 
 Kernel panic in run: PANIC at ../../tests/threads/tests.c:93 in fail(): test failed
-Call stack: 0xc0028389 0xc002a265 0xc002c02a 0xc002a2ab 0xc00207d1 0xc0020771
+Call stack: 0xc0028419 0xc002a2f5 0xc002c0ba 0xc002a33b 0xc00207d1 0xc0020771
 Translation of call stack:
-0xc0028389: debug_panic (.../../lib/kernel/debug.c:38)
-0xc002a265: run_test (.../tests/threads/tests.c:48)
-0xc002c02a: test_mlfqs_load_1 (...threads/mlfqs-load-1.c:41)
-0xc002a2ab: run_test (.../tests/threads/tests.c:57)
+0xc0028419: debug_panic (.../../lib/kernel/debug.c:38)
+0xc002a2f5: run_test (.../tests/threads/tests.c:48)
+0xc002c0ba: test_mlfqs_load_1 (...threads/mlfqs-load-1.c:41)
+0xc002a33b: run_test (.../tests/threads/tests.c:57)
 0xc00207d1: run_task (.../../../threads/init.c:292)
 0xc0020771: run_actions (.../../../threads/init.c:341)
 
@@ -981,7 +1415,7 @@ Executing 'mlfqs-load-1':
 (mlfqs-load-1) spinning for up to 45 seconds, please wait...
 (mlfqs-load-1) FAIL: load average stayed below 0.5 for more than 45 seconds
 Kernel PANIC at ../../tests/threads/tests.c:93 in fail(): test failed
-Call stack: 0xc0028389 0xc002a265 0xc002c02a 0xc002a2ab 0xc00207d1 0xc0020771.
+Call stack: 0xc0028419 0xc002a2f5 0xc002c0ba 0xc002a33b 0xc00207d1 0xc0020771.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
@@ -1100,102 +1534,522 @@ Boot complete.
 Executing 'mlfqs-load-60':
 (mlfqs-load-60) begin
 (mlfqs-load-60) Starting 60 niced load threads...
-(mlfqs-load-60) Starting threads took 1 seconds.
+(mlfqs-load-60) a thread goes to sleep : load 0 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 4 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 7 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 11 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 15 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 18 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 22 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 25 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 29 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 32 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 38 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 43 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 48 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 52 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 57 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 2 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 16 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 19 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 35 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 10 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 20 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 41 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 23 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 45 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 6 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 49 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 26 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 14 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 56 it will wake up at 1026
+
+(mlfqs-load-60) Starting threads took 3 seconds.
+(mlfqs-load-60) a thread goes to sleep : load 59 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 31 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 9 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 37 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 40 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 44 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 8 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 51 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 54 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 58 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 30 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 3 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 34 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 39 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 5 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 24 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 13 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 27 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 33 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 12 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 46 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 53 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 28 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 42 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 50 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 1 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 21 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 55 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 36 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 17 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : load 47 it will wake up at 1026
+
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 1026
+
 (mlfqs-load-60) After 0 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 1226
+
 (mlfqs-load-60) After 2 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 1426
+
 (mlfqs-load-60) After 4 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 1626
+
 (mlfqs-load-60) After 6 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 1826
+
 (mlfqs-load-60) After 8 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 2026
+
 (mlfqs-load-60) After 10 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 2226
+
 (mlfqs-load-60) After 12 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 2426
+
 (mlfqs-load-60) After 14 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 2626
+
 (mlfqs-load-60) After 16 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 2826
+
+(mlfqs-load-60) a thread goes to sleep : load 49 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 23 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 10 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 16 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 0 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 11 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 22 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 32 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 48 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 36 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 21 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 42 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 12 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 13 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 5 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 30 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 51 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 40 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 31 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 14 it will wake up at 13026
+
 (mlfqs-load-60) After 18 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 3026
+
 (mlfqs-load-60) After 20 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 3226
+
 (mlfqs-load-60) After 22 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 3426
+
 (mlfqs-load-60) After 24 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 3626
+
 (mlfqs-load-60) After 26 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 3826
+
+(mlfqs-load-60) a thread goes to sleep : load 34 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 54 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 37 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 56 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 45 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 35 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 57 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 15 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 29 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 47 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 55 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 28 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 27 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 3 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 58 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 59 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 41 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 2 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 18 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 43 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 1 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 53 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 24 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 8 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 26 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 4 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 25 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 17 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 33 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 9 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 20 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 38 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 39 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 44 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 52 it will wake up at 13026
+
 (mlfqs-load-60) After 28 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 4026
+
+(mlfqs-load-60) a thread goes to sleep : load 46 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 50 it will wake up at 13026
+
 (mlfqs-load-60) After 30 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 4226
+
 (mlfqs-load-60) After 32 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 4426
+
 (mlfqs-load-60) After 34 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 4626
+
 (mlfqs-load-60) After 36 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 4826
+
 (mlfqs-load-60) After 38 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 5026
+
 (mlfqs-load-60) After 40 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 5226
+
+(mlfqs-load-60) a thread goes to sleep : load 6 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 19 it will wake up at 13026
+
+(mlfqs-load-60) a thread goes to sleep : load 7 it will wake up at 13026
+
 (mlfqs-load-60) After 42 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 5426
+
 (mlfqs-load-60) After 44 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 5626
+
 (mlfqs-load-60) After 46 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 5826
+
 (mlfqs-load-60) After 48 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 6026
+
 (mlfqs-load-60) After 50 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 6226
+
 (mlfqs-load-60) After 52 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 6426
+
 (mlfqs-load-60) After 54 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 6626
+
 (mlfqs-load-60) After 56 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 6826
+
 (mlfqs-load-60) After 58 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 7026
+
 (mlfqs-load-60) After 60 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 7226
+
 (mlfqs-load-60) After 62 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 7426
+
 (mlfqs-load-60) After 64 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 7626
+
 (mlfqs-load-60) After 66 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 7826
+
 (mlfqs-load-60) After 68 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 8026
+
 (mlfqs-load-60) After 70 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 8226
+
 (mlfqs-load-60) After 72 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 8426
+
 (mlfqs-load-60) After 74 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 8626
+
 (mlfqs-load-60) After 76 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 8826
+
 (mlfqs-load-60) After 78 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 9026
+
 (mlfqs-load-60) After 80 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 9226
+
 (mlfqs-load-60) After 82 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 9426
+
 (mlfqs-load-60) After 84 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 9626
+
 (mlfqs-load-60) After 86 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 9826
+
 (mlfqs-load-60) After 88 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 10026
+
 (mlfqs-load-60) After 90 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 10226
+
 (mlfqs-load-60) After 92 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 10426
+
 (mlfqs-load-60) After 94 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 10626
+
 (mlfqs-load-60) After 96 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 10826
+
 (mlfqs-load-60) After 98 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 11026
+
 (mlfqs-load-60) After 100 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 11226
+
 (mlfqs-load-60) After 102 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 11426
+
 (mlfqs-load-60) After 104 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 11626
+
 (mlfqs-load-60) After 106 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 11826
+
 (mlfqs-load-60) After 108 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 12026
+
 (mlfqs-load-60) After 110 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 12226
+
 (mlfqs-load-60) After 112 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 12426
+
 (mlfqs-load-60) After 114 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 12626
+
 (mlfqs-load-60) After 116 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 12826
+
 (mlfqs-load-60) After 118 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 13026
+
 (mlfqs-load-60) After 120 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 13226
+
 (mlfqs-load-60) After 122 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 13426
+
 (mlfqs-load-60) After 124 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 13626
+
 (mlfqs-load-60) After 126 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 13826
+
 (mlfqs-load-60) After 128 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 14026
+
 (mlfqs-load-60) After 130 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 14226
+
 (mlfqs-load-60) After 132 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 14426
+
 (mlfqs-load-60) After 134 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 14626
+
 (mlfqs-load-60) After 136 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 14826
+
 (mlfqs-load-60) After 138 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 15026
+
 (mlfqs-load-60) After 140 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 15226
+
 (mlfqs-load-60) After 142 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 15426
+
 (mlfqs-load-60) After 144 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 15626
+
 (mlfqs-load-60) After 146 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 15826
+
 (mlfqs-load-60) After 148 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 16026
+
 (mlfqs-load-60) After 150 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 16226
+
 (mlfqs-load-60) After 152 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 16426
+
 (mlfqs-load-60) After 154 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 16626
+
 (mlfqs-load-60) After 156 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 16826
+
 (mlfqs-load-60) After 158 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 17026
+
 (mlfqs-load-60) After 160 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 17226
+
 (mlfqs-load-60) After 162 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 17426
+
 (mlfqs-load-60) After 164 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 17626
+
 (mlfqs-load-60) After 166 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 17826
+
 (mlfqs-load-60) After 168 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 18026
+
 (mlfqs-load-60) After 170 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 18226
+
 (mlfqs-load-60) After 172 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 18426
+
 (mlfqs-load-60) After 174 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 18626
+
 (mlfqs-load-60) After 176 seconds, load average=0.00.
+(mlfqs-load-60) a thread goes to sleep : main it will wake up at 18826
+
 (mlfqs-load-60) After 178 seconds, load average=0.00.
 (mlfqs-load-60) end
 Execution of 'mlfqs-load-60' complete.
 Timer: 18841 ticks
 Thread: 0 idle ticks, 18844 kernel ticks, 0 user ticks
-Console: 5295 characters output
+Console: 20650 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1309,102 +2163,522 @@ Boot complete.
 Executing 'mlfqs-load-avg':
 (mlfqs-load-avg) begin
 (mlfqs-load-avg) Starting 60 load threads...
-(mlfqs-load-avg) Starting threads took 1 seconds.
+(mlfqs-load-avg) a thread goes to sleep : load 0 it will wake up at 1026
+
+(mlfqs-load-avg) a thread goes to sleep : load 4 it will wake up at 1426
+
+(mlfqs-load-avg) a thread goes to sleep : load 7 it will wake up at 1726
+
+(mlfqs-load-avg) a thread goes to sleep : load 11 it will wake up at 2126
+
+(mlfqs-load-avg) a thread goes to sleep : load 15 it will wake up at 2526
+
+(mlfqs-load-avg) a thread goes to sleep : load 18 it will wake up at 2826
+
+(mlfqs-load-avg) a thread goes to sleep : load 22 it will wake up at 3226
+
+(mlfqs-load-avg) a thread goes to sleep : load 26 it will wake up at 3626
+
+(mlfqs-load-avg) a thread goes to sleep : load 29 it will wake up at 3926
+
+(mlfqs-load-avg) a thread goes to sleep : load 33 it will wake up at 4326
+
+(mlfqs-load-avg) a thread goes to sleep : load 38 it will wake up at 4826
+
+(mlfqs-load-avg) a thread goes to sleep : load 43 it will wake up at 5326
+
+(mlfqs-load-avg) a thread goes to sleep : load 48 it will wake up at 5826
+
+(mlfqs-load-avg) a thread goes to sleep : load 52 it will wake up at 6226
+
+(mlfqs-load-avg) a thread goes to sleep : load 57 it will wake up at 6726
+
+(mlfqs-load-avg) a thread goes to sleep : load 30 it will wake up at 4026
+
+(mlfqs-load-avg) a thread goes to sleep : load 31 it will wake up at 4126
+
+(mlfqs-load-avg) a thread goes to sleep : load 19 it will wake up at 2926
+
+(mlfqs-load-avg) a thread goes to sleep : load 35 it will wake up at 4526
+
+(mlfqs-load-avg) a thread goes to sleep : load 10 it will wake up at 2026
+
+(mlfqs-load-avg) a thread goes to sleep : load 39 it will wake up at 4926
+
+(mlfqs-load-avg) a thread goes to sleep : load 41 it will wake up at 5126
+
+(mlfqs-load-avg) a thread goes to sleep : load 23 it will wake up at 3326
+
+(mlfqs-load-avg) a thread goes to sleep : load 45 it will wake up at 5526
+
+(mlfqs-load-avg) a thread goes to sleep : load 6 it will wake up at 1626
+
+(mlfqs-load-avg) a thread goes to sleep : load 49 it will wake up at 5926
+
+(mlfqs-load-avg) a thread goes to sleep : load 25 it will wake up at 3526
+
+(mlfqs-load-avg) a thread goes to sleep : load 14 it will wake up at 2426
+
+(mlfqs-load-avg) a thread goes to sleep : load 56 it will wake up at 6626
+
+(mlfqs-load-avg) a thread goes to sleep : load 27 it will wake up at 3726
+
+(mlfqs-load-avg) a thread goes to sleep : load 1 it will wake up at 1126
+
+(mlfqs-load-avg) a thread goes to sleep : load 3 it will wake up at 1326
+
+(mlfqs-load-avg) a thread goes to sleep : load 9 it will wake up at 1926
+
+(mlfqs-load-avg) a thread goes to sleep : load 37 it will wake up at 4726
+
+(mlfqs-load-avg) a thread goes to sleep : load 42 it will wake up at 5226
+
+(mlfqs-load-avg) a thread goes to sleep : load 44 it will wake up at 5426
+
+(mlfqs-load-avg) a thread goes to sleep : load 47 it will wake up at 5726
+
+(mlfqs-load-avg) a thread goes to sleep : load 51 it will wake up at 6126
+
+(mlfqs-load-avg) a thread goes to sleep : load 54 it will wake up at 6426
+
+(mlfqs-load-avg) Starting threads took 3 seconds.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 1026
+
+(mlfqs-load-avg) a thread goes to sleep : load 32 it will wake up at 4226
+
+(mlfqs-load-avg) a thread goes to sleep : load 36 it will wake up at 4626
+
+(mlfqs-load-avg) a thread goes to sleep : load 40 it will wake up at 5026
+
+(mlfqs-load-avg) a thread goes to sleep : load 46 it will wake up at 5626
+
+(mlfqs-load-avg) a thread goes to sleep : load 50 it will wake up at 6026
+
+(mlfqs-load-avg) a thread goes to sleep : load 55 it will wake up at 6526
+
+(mlfqs-load-avg) a thread goes to sleep : load 58 it will wake up at 6826
+
+(mlfqs-load-avg) a thread goes to sleep : load 17 it will wake up at 2726
+
+(mlfqs-load-avg) a thread goes to sleep : load 20 it will wake up at 3026
+
+(mlfqs-load-avg) a thread goes to sleep : load 8 it will wake up at 1826
+
+(mlfqs-load-avg) a thread goes to sleep : load 13 it will wake up at 2326
+
+(mlfqs-load-avg) a thread goes to sleep : load 59 it will wake up at 6926
+
+(mlfqs-load-avg) a thread goes to sleep : load 21 it will wake up at 3126
+
+(mlfqs-load-avg) a thread goes to sleep : load 24 it will wake up at 3426
+
+(mlfqs-load-avg) a thread goes to sleep : load 2 it will wake up at 1226
+
+(mlfqs-load-avg) a thread goes to sleep : load 5 it will wake up at 1526
+
+(mlfqs-load-avg) a thread goes to sleep : load 16 it will wake up at 2626
+
+(mlfqs-load-avg) a thread goes to sleep : load 53 it will wake up at 6326
+
+(mlfqs-load-avg) a thread goes to sleep : load 34 it will wake up at 4426
+
 (mlfqs-load-avg) After 0 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 1226
+
+(mlfqs-load-avg) a thread goes to sleep : load 28 it will wake up at 3826
+
 (mlfqs-load-avg) After 2 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 1426
+
+(mlfqs-load-avg) a thread goes to sleep : load 12 it will wake up at 2226
+
 (mlfqs-load-avg) After 4 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 1626
+
 (mlfqs-load-avg) After 6 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 1826
+
 (mlfqs-load-avg) After 8 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 2026
+
 (mlfqs-load-avg) After 10 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 2226
+
 (mlfqs-load-avg) After 12 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 2426
+
 (mlfqs-load-avg) After 14 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 2626
+
 (mlfqs-load-avg) After 16 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 2826
+
 (mlfqs-load-avg) After 18 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 3026
+
 (mlfqs-load-avg) After 20 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 3226
+
 (mlfqs-load-avg) After 22 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 3426
+
 (mlfqs-load-avg) After 24 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 3626
+
 (mlfqs-load-avg) After 26 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 3826
+
 (mlfqs-load-avg) After 28 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 4026
+
 (mlfqs-load-avg) After 30 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 4226
+
 (mlfqs-load-avg) After 32 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 4426
+
 (mlfqs-load-avg) After 34 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 4626
+
+(mlfqs-load-avg) a thread goes to sleep : load 28 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 15 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 34 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 36 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 39 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 41 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 43 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 45 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 47 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 48 it will wake up at 12026
+
 (mlfqs-load-avg) After 36 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 4826
+
 (mlfqs-load-avg) After 38 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 5026
+
+(mlfqs-load-avg) a thread goes to sleep : load 7 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 19 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 20 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 40 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 42 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 1 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 25 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 46 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 12 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 13 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 50 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 51 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 32 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 52 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 59 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 3 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 54 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 10 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 22 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 4 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 57 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 0 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 29 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 6 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 30 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 35 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 2 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 53 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 55 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 23 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 44 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 27 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 58 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 16 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 18 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 8 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 56 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 11 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 49 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 17 it will wake up at 12026
+
 (mlfqs-load-avg) After 40 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 5226
+
 (mlfqs-load-avg) After 42 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 5426
+
 (mlfqs-load-avg) After 44 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 5626
+
 (mlfqs-load-avg) After 46 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 5826
+
+(mlfqs-load-avg) a thread goes to sleep : load 24 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 14 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 38 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 26 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 5 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 37 it will wake up at 12026
+
 (mlfqs-load-avg) After 48 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 6026
+
 (mlfqs-load-avg) After 50 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 6226
+
 (mlfqs-load-avg) After 52 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : load 9 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 33 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 21 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 31 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 6426
+
 (mlfqs-load-avg) After 54 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 6626
+
 (mlfqs-load-avg) After 56 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 6826
+
 (mlfqs-load-avg) After 58 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 7026
+
 (mlfqs-load-avg) After 60 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 7226
+
 (mlfqs-load-avg) After 62 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 7426
+
 (mlfqs-load-avg) After 64 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 7626
+
 (mlfqs-load-avg) After 66 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 7826
+
 (mlfqs-load-avg) After 68 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 8026
+
 (mlfqs-load-avg) After 70 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 8226
+
 (mlfqs-load-avg) After 72 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 8426
+
 (mlfqs-load-avg) After 74 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 8626
+
 (mlfqs-load-avg) After 76 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 8826
+
 (mlfqs-load-avg) After 78 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 9026
+
 (mlfqs-load-avg) After 80 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 9226
+
 (mlfqs-load-avg) After 82 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 9426
+
 (mlfqs-load-avg) After 84 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 9626
+
 (mlfqs-load-avg) After 86 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 9826
+
 (mlfqs-load-avg) After 88 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 10026
+
 (mlfqs-load-avg) After 90 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 10226
+
 (mlfqs-load-avg) After 92 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 10426
+
 (mlfqs-load-avg) After 94 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 10626
+
 (mlfqs-load-avg) After 96 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 10826
+
 (mlfqs-load-avg) After 98 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 11026
+
 (mlfqs-load-avg) After 100 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 11226
+
 (mlfqs-load-avg) After 102 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 11426
+
 (mlfqs-load-avg) After 104 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 11626
+
 (mlfqs-load-avg) After 106 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 11826
+
 (mlfqs-load-avg) After 108 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 12026
+
 (mlfqs-load-avg) After 110 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 12226
+
 (mlfqs-load-avg) After 112 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 12426
+
 (mlfqs-load-avg) After 114 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 12626
+
 (mlfqs-load-avg) After 116 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 12826
+
 (mlfqs-load-avg) After 118 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 13026
+
 (mlfqs-load-avg) After 120 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 13226
+
 (mlfqs-load-avg) After 122 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 13426
+
 (mlfqs-load-avg) After 124 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 13626
+
 (mlfqs-load-avg) After 126 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 13826
+
 (mlfqs-load-avg) After 128 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 14026
+
 (mlfqs-load-avg) After 130 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 14226
+
 (mlfqs-load-avg) After 132 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 14426
+
 (mlfqs-load-avg) After 134 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 14626
+
 (mlfqs-load-avg) After 136 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 14826
+
 (mlfqs-load-avg) After 138 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 15026
+
 (mlfqs-load-avg) After 140 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 15226
+
 (mlfqs-load-avg) After 142 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 15426
+
 (mlfqs-load-avg) After 144 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 15626
+
 (mlfqs-load-avg) After 146 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 15826
+
 (mlfqs-load-avg) After 148 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 16026
+
 (mlfqs-load-avg) After 150 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 16226
+
 (mlfqs-load-avg) After 152 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 16426
+
 (mlfqs-load-avg) After 154 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 16626
+
 (mlfqs-load-avg) After 156 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 16826
+
 (mlfqs-load-avg) After 158 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 17026
+
 (mlfqs-load-avg) After 160 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 17226
+
 (mlfqs-load-avg) After 162 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 17426
+
 (mlfqs-load-avg) After 164 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 17626
+
 (mlfqs-load-avg) After 166 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 17826
+
 (mlfqs-load-avg) After 168 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 18026
+
 (mlfqs-load-avg) After 170 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 18226
+
 (mlfqs-load-avg) After 172 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 18426
+
 (mlfqs-load-avg) After 174 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 18626
+
 (mlfqs-load-avg) After 176 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 18826
+
 (mlfqs-load-avg) After 178 seconds, load average=0.00.
 (mlfqs-load-avg) end
 Execution of 'mlfqs-load-avg' complete.
 Timer: 18841 ticks
-Thread: 0 idle ticks, 18846 kernel ticks, 0 user ticks
-Console: 5386 characters output
+Thread: 0 idle ticks, 18844 kernel ticks, 0 user ticks
+Console: 20951 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1518,6 +2792,8 @@ Boot complete.
 Executing 'mlfqs-recent-1':
 (mlfqs-recent-1) begin
 (mlfqs-recent-1) Sleeping 10 seconds to allow recent_cpu to decay, please wait...
+(mlfqs-recent-1) a thread goes to sleep : main it will wake up at 1001
+
 (mlfqs-recent-1) After 2 seconds, recent_cpu is 0.00, load_avg is 0.00.
 (mlfqs-recent-1) After 4 seconds, recent_cpu is 0.00, load_avg is 0.00.
 (mlfqs-recent-1) After 6 seconds, recent_cpu is 0.00, load_avg is 0.00.
@@ -1612,7 +2888,133 @@ Executing 'mlfqs-recent-1':
 Execution of 'mlfqs-recent-1' complete.
 Timer: 19018 ticks
 Thread: 0 idle ticks, 19022 kernel ticks, 0 user ticks
-Console: 7085 characters output
+Console: 7157 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/mlfqs-fair-2 FAILURE:
+
+
+OUTPUT FROM tests/threads/mlfqs-fair-2:
+
+PiLo hda1
+Loading.........
+Kernel command line: -q -mlfqs run mlfqs-fair-2
+Pintos booting with 4,096 kB RAM...
+383 pages available in kernel pool.
+383 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+Boot complete.
+Executing 'mlfqs-fair-2':
+(mlfqs-fair-2) begin
+(mlfqs-fair-2) Starting 2 threads...
+(mlfqs-fair-2) Starting threads took 9 ticks.
+(mlfqs-fair-2) Sleeping 40 seconds to let threads run, please wait...
+(mlfqs-fair-2) a thread goes to sleep : main it will wake up at 4051
+
+(mlfqs-fair-2) a thread goes to sleep : load 0 it will wake up at 526
+
+(mlfqs-fair-2) a thread goes to sleep : load 1 it will wake up at 526
+
+(mlfqs-fair-2) Thread 0 received 1500 ticks.
+(mlfqs-fair-2) Thread 1 received 1501 ticks.
+(mlfqs-fair-2) end
+Execution of 'mlfqs-fair-2' complete.
+Timer: 4071 ticks
+Thread: 0 idle ticks, 4074 kernel ticks, 0 user ticks
+Console: 839 characters output
+Keyboard: 0 keys pressed
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/threads/mlfqs-fair-20 FAILURE:
+
+
+OUTPUT FROM tests/threads/mlfqs-fair-20:
+
+PiLo hda1
+Loading.........
+Kernel command line: -q -mlfqs run mlfqs-fair-20
+Pintos booting with 4,096 kB RAM...
+383 pages available in kernel pool.
+383 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+Boot complete.
+Executing 'mlfqs-fair-20':
+(mlfqs-fair-20) begin
+(mlfqs-fair-20) Starting 20 threads...
+(mlfqs-fair-20) a thread goes to sleep : load 0 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 4 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 10 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 13 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 19 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 1 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 12 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 6 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 16 it will wake up at 526
+
+(mlfqs-fair-20) Starting threads took 93 ticks.
+(mlfqs-fair-20) Sleeping 40 seconds to let threads run, please wait...
+(mlfqs-fair-20) a thread goes to sleep : main it will wake up at 4192
+
+(mlfqs-fair-20) a thread goes to sleep : load 15 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 8 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 2 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 3 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 18 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 11 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 9 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 7 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 5 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 17 it will wake up at 526
+
+(mlfqs-fair-20) a thread goes to sleep : load 14 it will wake up at 526
+
+(mlfqs-fair-20) Thread 0 received 152 ticks.
+(mlfqs-fair-20) Thread 1 received 152 ticks.
+(mlfqs-fair-20) Thread 2 received 149 ticks.
+(mlfqs-fair-20) Thread 3 received 148 ticks.
+(mlfqs-fair-20) Thread 4 received 153 ticks.
+(mlfqs-fair-20) Thread 5 received 148 ticks.
+(mlfqs-fair-20) Thread 6 received 152 ticks.
+(mlfqs-fair-20) Thread 7 received 148 ticks.
+(mlfqs-fair-20) Thread 8 received 148 ticks.
+(mlfqs-fair-20) Thread 9 received 148 ticks.
+(mlfqs-fair-20) Thread 10 received 152 ticks.
+(mlfqs-fair-20) Thread 11 received 148 ticks.
+(mlfqs-fair-20) Thread 12 received 153 ticks.
+(mlfqs-fair-20) Thread 13 received 153 ticks.
+(mlfqs-fair-20) Thread 14 received 149 ticks.
+(mlfqs-fair-20) Thread 15 received 152 ticks.
+(mlfqs-fair-20) Thread 16 received 153 ticks.
+(mlfqs-fair-20) Thread 17 received 148 ticks.
+(mlfqs-fair-20) Thread 18 received 149 ticks.
+(mlfqs-fair-20) Thread 19 received 152 ticks.
+(mlfqs-fair-20) end
+Execution of 'mlfqs-fair-20' complete.
+Timer: 4322 ticks
+Thread: 0 idle ticks, 4325 kernel ticks, 0 user ticks
+Console: 2978 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1641,13 +3043,19 @@ Executing 'mlfqs-nice-2':
 (mlfqs-nice-2) Starting 2 threads...
 (mlfqs-nice-2) Starting threads took 9 ticks.
 (mlfqs-nice-2) Sleeping 40 seconds to let threads run, please wait...
+(mlfqs-nice-2) a thread goes to sleep : main it will wake up at 4051
+
+(mlfqs-nice-2) a thread goes to sleep : load 0 it will wake up at 526
+
+(mlfqs-nice-2) a thread goes to sleep : load 1 it will wake up at 526
+
 (mlfqs-nice-2) Thread 0 received 1501 ticks.
 (mlfqs-nice-2) Thread 1 received 1500 ticks.
 (mlfqs-nice-2) end
 Execution of 'mlfqs-nice-2' complete.
-Timer: 4070 ticks
-Thread: 0 idle ticks, 4073 kernel ticks, 0 user ticks
-Console: 627 characters output
+Timer: 4071 ticks
+Thread: 0 idle ticks, 4074 kernel ticks, 0 user ticks
+Console: 839 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1661,13 +3069,13 @@ thread   actual <-> expected explanation
      0      300 <<< 672      Too small, by 347.
      1      300 <<< 588      Too small, by 263.
      2      301 <<< 492      Too small, by 166.
-     3      301 <<< 408      Too small, by 82.
+     3      300 <<< 408      Too small, by 83.
      4      300  =  316      
-     5      301 >>> 232      Too big, by 44.
-     6      301 >>> 152      Too big, by 124.
-     7      300 >>> 92       Too big, by 183.
+     5      300 >>> 232      Too big, by 43.
+     6      300 >>> 152      Too big, by 123.
+     7      301 >>> 92       Too big, by 184.
      8      300 >>> 40       Too big, by 235.
-     9      300 >>> 8        Too big, by 267.
+     9      301 >>> 8        Too big, by 268.
 
 OUTPUT FROM tests/threads/mlfqs-nice-10:
 
@@ -1682,23 +3090,45 @@ Boot complete.
 Executing 'mlfqs-nice-10':
 (mlfqs-nice-10) begin
 (mlfqs-nice-10) Starting 10 threads...
-(mlfqs-nice-10) Starting threads took 26 ticks.
+(mlfqs-nice-10) a thread goes to sleep : load 0 it will wake up at 526
+
+(mlfqs-nice-10) a thread goes to sleep : load 4 it will wake up at 526
+
+(mlfqs-nice-10) a thread goes to sleep : load 8 it will wake up at 526
+
+(mlfqs-nice-10) a thread goes to sleep : load 3 it will wake up at 526
+
+(mlfqs-nice-10) Starting threads took 44 ticks.
 (mlfqs-nice-10) Sleeping 40 seconds to let threads run, please wait...
+(mlfqs-nice-10) a thread goes to sleep : main it will wake up at 4111
+
+(mlfqs-nice-10) a thread goes to sleep : load 1 it will wake up at 526
+
+(mlfqs-nice-10) a thread goes to sleep : load 7 it will wake up at 526
+
+(mlfqs-nice-10) a thread goes to sleep : load 2 it will wake up at 526
+
+(mlfqs-nice-10) a thread goes to sleep : load 5 it will wake up at 526
+
+(mlfqs-nice-10) a thread goes to sleep : load 6 it will wake up at 526
+
+(mlfqs-nice-10) a thread goes to sleep : load 9 it will wake up at 526
+
 (mlfqs-nice-10) Thread 0 received 300 ticks.
 (mlfqs-nice-10) Thread 1 received 300 ticks.
 (mlfqs-nice-10) Thread 2 received 301 ticks.
-(mlfqs-nice-10) Thread 3 received 301 ticks.
+(mlfqs-nice-10) Thread 3 received 300 ticks.
 (mlfqs-nice-10) Thread 4 received 300 ticks.
-(mlfqs-nice-10) Thread 5 received 301 ticks.
-(mlfqs-nice-10) Thread 6 received 301 ticks.
-(mlfqs-nice-10) Thread 7 received 300 ticks.
+(mlfqs-nice-10) Thread 5 received 300 ticks.
+(mlfqs-nice-10) Thread 6 received 300 ticks.
+(mlfqs-nice-10) Thread 7 received 301 ticks.
 (mlfqs-nice-10) Thread 8 received 300 ticks.
-(mlfqs-nice-10) Thread 9 received 300 ticks.
+(mlfqs-nice-10) Thread 9 received 301 ticks.
 (mlfqs-nice-10) end
 Execution of 'mlfqs-nice-10' complete.
-Timer: 4138 ticks
-Thread: 0 idle ticks, 4142 kernel ticks, 0 user ticks
-Console: 997 characters output
+Timer: 4179 ticks
+Thread: 0 idle ticks, 4183 kernel ticks, 0 user ticks
+Console: 1788 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1723,6 +3153,8 @@ Differences in `diff -u' format:
   (mlfqs-block) begin
   (mlfqs-block) Main thread acquiring lock.
   (mlfqs-block) Main thread creating block thread, sleeping 25 seconds...
++ (mlfqs-block) a thread goes to sleep : main it will wake up at 2542
++ 
   (mlfqs-block) Block thread spinning for 20 seconds...
   (mlfqs-block) Block thread acquiring lock...
   (mlfqs-block) Main thread spinning for 5 seconds...
@@ -1745,6 +3177,8 @@ Executing 'mlfqs-block':
 (mlfqs-block) begin
 (mlfqs-block) Main thread acquiring lock.
 (mlfqs-block) Main thread creating block thread, sleeping 25 seconds...
+(mlfqs-block) a thread goes to sleep : main it will wake up at 2542
+
 (mlfqs-block) Block thread spinning for 20 seconds...
 (mlfqs-block) Block thread acquiring lock...
 (mlfqs-block) Main thread spinning for 5 seconds...
@@ -1754,6 +3188,6 @@ Executing 'mlfqs-block':
 Execution of 'mlfqs-block' complete.
 Timer: 3069 ticks
 Thread: 0 idle ticks, 3072 kernel ticks, 0 user ticks
-Console: 748 characters output
+Console: 817 characters output
 Keyboard: 0 keys pressed
 Powering off...

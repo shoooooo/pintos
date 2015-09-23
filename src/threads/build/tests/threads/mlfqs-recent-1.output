@@ -9,6 +9,8 @@ Boot complete.
 Executing 'mlfqs-recent-1':
 (mlfqs-recent-1) begin
 (mlfqs-recent-1) Sleeping 10 seconds to allow recent_cpu to decay, please wait...
+(mlfqs-recent-1) a thread goes to sleep : main it will wake up at 1001
+
 (mlfqs-recent-1) After 2 seconds, recent_cpu is 0.00, load_avg is 0.00.
 (mlfqs-recent-1) After 4 seconds, recent_cpu is 0.00, load_avg is 0.00.
 (mlfqs-recent-1) After 6 seconds, recent_cpu is 0.00, load_avg is 0.00.
@@ -103,6 +105,6 @@ Executing 'mlfqs-recent-1':
 Execution of 'mlfqs-recent-1' complete.
 Timer: 19018 ticks
 Thread: 0 idle ticks, 19022 kernel ticks, 0 user ticks
-Console: 7085 characters output
+Console: 7157 characters output
 Keyboard: 0 keys pressed
 Powering off...

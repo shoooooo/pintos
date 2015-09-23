@@ -1,1 +1,13 @@
-PASS
+FAIL
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (alarm-negative) begin
+  (alarm-negative) PASS
+  (alarm-negative) end
+Differences in `diff -u' format:
+  (alarm-negative) begin
++ (alarm-negative) a thread goes to sleep : main it will wake up at -74
++ 
+  (alarm-negative) PASS
+  (alarm-negative) end

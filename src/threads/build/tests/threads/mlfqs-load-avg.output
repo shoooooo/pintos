@@ -9,101 +9,521 @@ Boot complete.
 Executing 'mlfqs-load-avg':
 (mlfqs-load-avg) begin
 (mlfqs-load-avg) Starting 60 load threads...
-(mlfqs-load-avg) Starting threads took 1 seconds.
+(mlfqs-load-avg) a thread goes to sleep : load 0 it will wake up at 1026
+
+(mlfqs-load-avg) a thread goes to sleep : load 4 it will wake up at 1426
+
+(mlfqs-load-avg) a thread goes to sleep : load 7 it will wake up at 1726
+
+(mlfqs-load-avg) a thread goes to sleep : load 11 it will wake up at 2126
+
+(mlfqs-load-avg) a thread goes to sleep : load 15 it will wake up at 2526
+
+(mlfqs-load-avg) a thread goes to sleep : load 18 it will wake up at 2826
+
+(mlfqs-load-avg) a thread goes to sleep : load 22 it will wake up at 3226
+
+(mlfqs-load-avg) a thread goes to sleep : load 26 it will wake up at 3626
+
+(mlfqs-load-avg) a thread goes to sleep : load 29 it will wake up at 3926
+
+(mlfqs-load-avg) a thread goes to sleep : load 33 it will wake up at 4326
+
+(mlfqs-load-avg) a thread goes to sleep : load 38 it will wake up at 4826
+
+(mlfqs-load-avg) a thread goes to sleep : load 43 it will wake up at 5326
+
+(mlfqs-load-avg) a thread goes to sleep : load 48 it will wake up at 5826
+
+(mlfqs-load-avg) a thread goes to sleep : load 52 it will wake up at 6226
+
+(mlfqs-load-avg) a thread goes to sleep : load 57 it will wake up at 6726
+
+(mlfqs-load-avg) a thread goes to sleep : load 30 it will wake up at 4026
+
+(mlfqs-load-avg) a thread goes to sleep : load 31 it will wake up at 4126
+
+(mlfqs-load-avg) a thread goes to sleep : load 19 it will wake up at 2926
+
+(mlfqs-load-avg) a thread goes to sleep : load 35 it will wake up at 4526
+
+(mlfqs-load-avg) a thread goes to sleep : load 10 it will wake up at 2026
+
+(mlfqs-load-avg) a thread goes to sleep : load 39 it will wake up at 4926
+
+(mlfqs-load-avg) a thread goes to sleep : load 41 it will wake up at 5126
+
+(mlfqs-load-avg) a thread goes to sleep : load 23 it will wake up at 3326
+
+(mlfqs-load-avg) a thread goes to sleep : load 45 it will wake up at 5526
+
+(mlfqs-load-avg) a thread goes to sleep : load 6 it will wake up at 1626
+
+(mlfqs-load-avg) a thread goes to sleep : load 49 it will wake up at 5926
+
+(mlfqs-load-avg) a thread goes to sleep : load 25 it will wake up at 3526
+
+(mlfqs-load-avg) a thread goes to sleep : load 14 it will wake up at 2426
+
+(mlfqs-load-avg) a thread goes to sleep : load 56 it will wake up at 6626
+
+(mlfqs-load-avg) a thread goes to sleep : load 27 it will wake up at 3726
+
+(mlfqs-load-avg) a thread goes to sleep : load 1 it will wake up at 1126
+
+(mlfqs-load-avg) a thread goes to sleep : load 3 it will wake up at 1326
+
+(mlfqs-load-avg) a thread goes to sleep : load 9 it will wake up at 1926
+
+(mlfqs-load-avg) a thread goes to sleep : load 37 it will wake up at 4726
+
+(mlfqs-load-avg) a thread goes to sleep : load 42 it will wake up at 5226
+
+(mlfqs-load-avg) a thread goes to sleep : load 44 it will wake up at 5426
+
+(mlfqs-load-avg) a thread goes to sleep : load 47 it will wake up at 5726
+
+(mlfqs-load-avg) a thread goes to sleep : load 51 it will wake up at 6126
+
+(mlfqs-load-avg) a thread goes to sleep : load 54 it will wake up at 6426
+
+(mlfqs-load-avg) Starting threads took 3 seconds.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 1026
+
+(mlfqs-load-avg) a thread goes to sleep : load 32 it will wake up at 4226
+
+(mlfqs-load-avg) a thread goes to sleep : load 36 it will wake up at 4626
+
+(mlfqs-load-avg) a thread goes to sleep : load 40 it will wake up at 5026
+
+(mlfqs-load-avg) a thread goes to sleep : load 46 it will wake up at 5626
+
+(mlfqs-load-avg) a thread goes to sleep : load 50 it will wake up at 6026
+
+(mlfqs-load-avg) a thread goes to sleep : load 55 it will wake up at 6526
+
+(mlfqs-load-avg) a thread goes to sleep : load 58 it will wake up at 6826
+
+(mlfqs-load-avg) a thread goes to sleep : load 17 it will wake up at 2726
+
+(mlfqs-load-avg) a thread goes to sleep : load 20 it will wake up at 3026
+
+(mlfqs-load-avg) a thread goes to sleep : load 8 it will wake up at 1826
+
+(mlfqs-load-avg) a thread goes to sleep : load 13 it will wake up at 2326
+
+(mlfqs-load-avg) a thread goes to sleep : load 59 it will wake up at 6926
+
+(mlfqs-load-avg) a thread goes to sleep : load 21 it will wake up at 3126
+
+(mlfqs-load-avg) a thread goes to sleep : load 24 it will wake up at 3426
+
+(mlfqs-load-avg) a thread goes to sleep : load 2 it will wake up at 1226
+
+(mlfqs-load-avg) a thread goes to sleep : load 5 it will wake up at 1526
+
+(mlfqs-load-avg) a thread goes to sleep : load 16 it will wake up at 2626
+
+(mlfqs-load-avg) a thread goes to sleep : load 53 it will wake up at 6326
+
+(mlfqs-load-avg) a thread goes to sleep : load 34 it will wake up at 4426
+
 (mlfqs-load-avg) After 0 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 1226
+
+(mlfqs-load-avg) a thread goes to sleep : load 28 it will wake up at 3826
+
 (mlfqs-load-avg) After 2 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 1426
+
+(mlfqs-load-avg) a thread goes to sleep : load 12 it will wake up at 2226
+
 (mlfqs-load-avg) After 4 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 1626
+
 (mlfqs-load-avg) After 6 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 1826
+
 (mlfqs-load-avg) After 8 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 2026
+
 (mlfqs-load-avg) After 10 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 2226
+
 (mlfqs-load-avg) After 12 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 2426
+
 (mlfqs-load-avg) After 14 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 2626
+
 (mlfqs-load-avg) After 16 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 2826
+
 (mlfqs-load-avg) After 18 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 3026
+
 (mlfqs-load-avg) After 20 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 3226
+
 (mlfqs-load-avg) After 22 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 3426
+
 (mlfqs-load-avg) After 24 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 3626
+
 (mlfqs-load-avg) After 26 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 3826
+
 (mlfqs-load-avg) After 28 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 4026
+
 (mlfqs-load-avg) After 30 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 4226
+
 (mlfqs-load-avg) After 32 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 4426
+
 (mlfqs-load-avg) After 34 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 4626
+
+(mlfqs-load-avg) a thread goes to sleep : load 28 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 15 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 34 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 36 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 39 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 41 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 43 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 45 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 47 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 48 it will wake up at 12026
+
 (mlfqs-load-avg) After 36 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 4826
+
 (mlfqs-load-avg) After 38 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 5026
+
+(mlfqs-load-avg) a thread goes to sleep : load 7 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 19 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 20 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 40 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 42 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 1 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 25 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 46 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 12 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 13 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 50 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 51 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 32 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 52 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 59 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 3 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 54 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 10 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 22 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 4 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 57 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 0 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 29 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 6 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 30 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 35 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 2 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 53 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 55 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 23 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 44 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 27 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 58 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 16 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 18 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 8 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 56 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 11 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 49 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 17 it will wake up at 12026
+
 (mlfqs-load-avg) After 40 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 5226
+
 (mlfqs-load-avg) After 42 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 5426
+
 (mlfqs-load-avg) After 44 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 5626
+
 (mlfqs-load-avg) After 46 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 5826
+
+(mlfqs-load-avg) a thread goes to sleep : load 24 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 14 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 38 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 26 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 5 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 37 it will wake up at 12026
+
 (mlfqs-load-avg) After 48 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 6026
+
 (mlfqs-load-avg) After 50 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 6226
+
 (mlfqs-load-avg) After 52 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : load 9 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 33 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 21 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : load 31 it will wake up at 12026
+
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 6426
+
 (mlfqs-load-avg) After 54 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 6626
+
 (mlfqs-load-avg) After 56 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 6826
+
 (mlfqs-load-avg) After 58 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 7026
+
 (mlfqs-load-avg) After 60 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 7226
+
 (mlfqs-load-avg) After 62 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 7426
+
 (mlfqs-load-avg) After 64 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 7626
+
 (mlfqs-load-avg) After 66 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 7826
+
 (mlfqs-load-avg) After 68 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 8026
+
 (mlfqs-load-avg) After 70 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 8226
+
 (mlfqs-load-avg) After 72 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 8426
+
 (mlfqs-load-avg) After 74 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 8626
+
 (mlfqs-load-avg) After 76 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 8826
+
 (mlfqs-load-avg) After 78 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 9026
+
 (mlfqs-load-avg) After 80 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 9226
+
 (mlfqs-load-avg) After 82 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 9426
+
 (mlfqs-load-avg) After 84 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 9626
+
 (mlfqs-load-avg) After 86 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 9826
+
 (mlfqs-load-avg) After 88 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 10026
+
 (mlfqs-load-avg) After 90 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 10226
+
 (mlfqs-load-avg) After 92 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 10426
+
 (mlfqs-load-avg) After 94 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 10626
+
 (mlfqs-load-avg) After 96 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 10826
+
 (mlfqs-load-avg) After 98 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 11026
+
 (mlfqs-load-avg) After 100 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 11226
+
 (mlfqs-load-avg) After 102 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 11426
+
 (mlfqs-load-avg) After 104 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 11626
+
 (mlfqs-load-avg) After 106 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 11826
+
 (mlfqs-load-avg) After 108 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 12026
+
 (mlfqs-load-avg) After 110 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 12226
+
 (mlfqs-load-avg) After 112 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 12426
+
 (mlfqs-load-avg) After 114 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 12626
+
 (mlfqs-load-avg) After 116 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 12826
+
 (mlfqs-load-avg) After 118 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 13026
+
 (mlfqs-load-avg) After 120 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 13226
+
 (mlfqs-load-avg) After 122 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 13426
+
 (mlfqs-load-avg) After 124 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 13626
+
 (mlfqs-load-avg) After 126 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 13826
+
 (mlfqs-load-avg) After 128 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 14026
+
 (mlfqs-load-avg) After 130 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 14226
+
 (mlfqs-load-avg) After 132 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 14426
+
 (mlfqs-load-avg) After 134 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 14626
+
 (mlfqs-load-avg) After 136 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 14826
+
 (mlfqs-load-avg) After 138 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 15026
+
 (mlfqs-load-avg) After 140 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 15226
+
 (mlfqs-load-avg) After 142 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 15426
+
 (mlfqs-load-avg) After 144 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 15626
+
 (mlfqs-load-avg) After 146 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 15826
+
 (mlfqs-load-avg) After 148 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 16026
+
 (mlfqs-load-avg) After 150 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 16226
+
 (mlfqs-load-avg) After 152 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 16426
+
 (mlfqs-load-avg) After 154 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 16626
+
 (mlfqs-load-avg) After 156 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 16826
+
 (mlfqs-load-avg) After 158 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 17026
+
 (mlfqs-load-avg) After 160 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 17226
+
 (mlfqs-load-avg) After 162 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 17426
+
 (mlfqs-load-avg) After 164 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 17626
+
 (mlfqs-load-avg) After 166 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 17826
+
 (mlfqs-load-avg) After 168 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 18026
+
 (mlfqs-load-avg) After 170 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 18226
+
 (mlfqs-load-avg) After 172 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 18426
+
 (mlfqs-load-avg) After 174 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 18626
+
 (mlfqs-load-avg) After 176 seconds, load average=0.00.
+(mlfqs-load-avg) a thread goes to sleep : main it will wake up at 18826
+
 (mlfqs-load-avg) After 178 seconds, load average=0.00.
 (mlfqs-load-avg) end
 Execution of 'mlfqs-load-avg' complete.
 Timer: 18841 ticks
-Thread: 0 idle ticks, 18846 kernel ticks, 0 user ticks
-Console: 5386 characters output
+Thread: 0 idle ticks, 18844 kernel ticks, 0 user ticks
+Console: 20951 characters output
 Keyboard: 0 keys pressed
 Powering off...

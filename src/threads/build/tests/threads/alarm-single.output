@@ -1,5 +1,5 @@
 PiLo hda1
-Loading.........
+Loading........
 Kernel command line: -q run alarm-single
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
@@ -13,6 +13,18 @@ Executing 'alarm-single':
 (alarm-single) thread 1 sleeps 20 ticks each time, and so on.
 (alarm-single) If successful, product of iteration count and
 (alarm-single) sleep duration will appear in nondescending order.
+(alarm-single) a thread goes to sleep : thread 0 it will wake up at 174
+
+(alarm-single) a thread goes to sleep : thread 4 it will wake up at 214
+
+(alarm-single) a thread goes to sleep : main it will wake up at 333
+
+(alarm-single) a thread goes to sleep : thread 3 it will wake up at 204
+
+(alarm-single) a thread goes to sleep : thread 1 it will wake up at 184
+
+(alarm-single) a thread goes to sleep : thread 2 it will wake up at 194
+
 (alarm-single) thread 0: duration=10, iteration=1, product=10
 (alarm-single) thread 1: duration=20, iteration=1, product=20
 (alarm-single) thread 2: duration=30, iteration=1, product=30
@@ -20,8 +32,8 @@ Executing 'alarm-single':
 (alarm-single) thread 4: duration=50, iteration=1, product=50
 (alarm-single) end
 Execution of 'alarm-single' complete.
-Timer: 377 ticks
-Thread: 0 idle ticks, 379 kernel ticks, 0 user ticks
-Console: 982 characters output
+Timer: 385 ticks
+Thread: 0 idle ticks, 387 kernel ticks, 0 user ticks
+Console: 1416 characters output
 Keyboard: 0 keys pressed
 Powering off...

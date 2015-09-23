@@ -10,6 +10,8 @@ Executing 'mlfqs-block':
 (mlfqs-block) begin
 (mlfqs-block) Main thread acquiring lock.
 (mlfqs-block) Main thread creating block thread, sleeping 25 seconds...
+(mlfqs-block) a thread goes to sleep : main it will wake up at 2542
+
 (mlfqs-block) Block thread spinning for 20 seconds...
 (mlfqs-block) Block thread acquiring lock...
 (mlfqs-block) Main thread spinning for 5 seconds...
@@ -19,6 +21,6 @@ Executing 'mlfqs-block':
 Execution of 'mlfqs-block' complete.
 Timer: 3069 ticks
 Thread: 0 idle ticks, 3072 kernel ticks, 0 user ticks
-Console: 748 characters output
+Console: 817 characters output
 Keyboard: 0 keys pressed
 Powering off...
