@@ -42,6 +42,15 @@ static struct sleeper {
 
 static struct list sleeper_list;
 
+static bool compare_morning (const struct list_elem *a, const struct list_elem *b, void *aux UNUSED) {
+
+  const struct sleeper *A = list_entry(a, struct sleeper, elem);
+  const struct sleeper *B = list_entry(b, struct sleeper, elem);
+  return A->morning < B->morning;
+
+
+}
+
 ////< NEW IMPLEMENTATION
 
 /* Sets up the timer to interrupt TIMER_FREQ times per second,
@@ -119,24 +128,36 @@ timer_sleep (int64_t ticks)
 
   struct sleeper *s;
   s = malloc(sizeof(a_sleeper));
+  ASSERT (s);
   s->t = thread_current ();
   s->morning = end;
-  list_push_back (&sleeper_list, &s->elem);
+  //list_insert_ordered (&sleeper_list, &s->elem, compare_morning, NULL);
+  
+
+  list_push_back(&sleeper_list, &s->elem);
+  list_sort(&sleeper_list, compare_morning, NULL);
   struct list_elem *e;
-  msg("a thread goes to sleep : %s it will wake up at %lld\n", s->t->name, s->morning);
+  msg("a thread goes to sleep : %s it will wake up at %lld, the time now is : %lld", s->t->name, s->morning, timer_ticks());
+  msg("and the list in order :");
       for (e = list_begin (&sleeper_list); e != list_end (&sleeper_list);
            e = list_next (e))
         {
-        //  struct sleeper *f = list_entry (e, struct sleeper, elem);
-        //  printf("thread %s wakes up at %lld\n", f->t->name, f->morning);
+          struct sleeper *f = list_entry (e, struct sleeper, elem);
+          //printf("   THREAD NAME [%s]    WAKE TIME [%lld]\n", f->t->name, f->morning);
+          printf("   THREAD ID [%d] / NAME [%s] / WAKE TIME [%lld] / TIME NOW [%lld]\n", f->t->tid,f->t->name, f->morning, timer_ticks());
         }
+  thread_block();
+  if(s->t->status == THREAD_READY) {
+
+      thread_yield();
+  }
+
+
+  
+
 
   //? do we need ASSERT here?
 
-
-  ASSERT (intr_get_level () == INTR_ON);
-  while (timer_elapsed (start) < ticks) 
-    thread_yield ();
   ////< NEW IMPLEMENTATION
 
 
@@ -219,6 +240,20 @@ timer_interrupt (struct intr_frame *args UNUSED)
 {
   ticks++;
   thread_tick ();
+
+  ////> NEW IMPLEMENTATION
+  if(!list_empty(&sleeper_list)) {
+    struct list_elem *e;
+    e=list_front(&sleeper_list);
+    struct sleeper *f = list_entry(e, struct sleeper, elem);
+    if(timer_ticks() >= f->morning) { // 
+      thread_unblock(f->t);
+      list_pop_front(&sleeper_list);
+    }
+
+  }
+
+  ////< NEW INPLEMENTATION
 }
 
 /* Returns true if LOOPS iterations waits for more than one timer

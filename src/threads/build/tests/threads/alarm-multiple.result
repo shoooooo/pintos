@@ -1,11 +1,9 @@
 FAIL
-Kernel panic in run: PANIC at ../../tests/threads/tests.c:99 in fail(): test failed
-Call stack: 0xc0028419 0xc002a2f5 0xc002a6c6 0xc002a751 0xc002a33b 0xc00207d1 0xc0020771
+Kernel panic in run: PANIC at ../../threads/thread.c:236 in thread_block(): assertion `intr_get_level () == INTR_OFF' failed.
+Call stack: 0xc0028589 0xc0020d5b 0xc0023c84 0xc002a55e 0xc00210d2
 Translation of call stack:
-0xc0028419: debug_panic (.../../lib/kernel/debug.c:38)
-0xc002a2f5: run_test (.../tests/threads/tests.c:54)
-0xc002a6c6: test_sleep (.../threads/alarm-wait.c:105)
-0xc002a751: test_alarm_multiple (...s/threads/alarm-wait.c:25)
-0xc002a33b: run_test (.../tests/threads/tests.c:63)
-0xc00207d1: run_task (.../../../threads/init.c:292)
-0xc0020771: run_actions (.../../../threads/init.c:341)
+0xc0028589: debug_panic (.../../lib/kernel/debug.c:38)
+0xc0020d5b: thread_block (..../../threads/thread.c:238)
+0xc0023c84: timer_sleep (...../../devices/timer.c:150)
+0xc002a55e: sleeper (.../threads/alarm-wait.c:148)
+0xc00210d2: kernel_thread (..../../threads/thread.c:444)

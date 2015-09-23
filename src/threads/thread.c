@@ -15,6 +15,17 @@
 #include "userprog/process.h"
 #endif
 
+////> NEW IMPLEMENTATION
+
+// static struct list sleep_list;
+
+// struct sleeper {
+
+
+// }
+
+////< NEW IMPLEMENTATION
+
 /* Random value for struct thread's `magic' member.
    Used to detect stack overflow.  See the big comment at the top
    of thread.h for details. */
@@ -581,6 +592,28 @@ allocate_tid (void)
 
   return tid;
 }
+
+////> NEW IMPLEMENTATION
+
+void
+thread_freeze (void) 
+{
+  struct thread *cur = thread_current ();
+  enum intr_level old_level;
+  
+  ASSERT (!intr_context ());
+
+  old_level = intr_disable ();
+  if (cur != idle_thread) 
+    list_push_back (&ready_list, &cur->elem);
+  cur->status = THREAD_BLOCKED;
+  schedule ();
+  intr_set_level (old_level);
+}
+
+
+////< NEW IMPLEMENTATION
+
 
 /* Offset of `stack' member within `struct thread'.
    Used by switch.S, which can't figure it out on its own. */

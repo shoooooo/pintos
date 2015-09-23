@@ -13,98 +13,21 @@ Executing 'alarm-multiple':
 (alarm-multiple) thread 1 sleeps 20 ticks each time, and so on.
 (alarm-multiple) If successful, product of iteration count and
 (alarm-multiple) sleep duration will appear in nondescending order.
-(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 175
-
-(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 205
-
-(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 215
-
-(alarm-multiple) a thread goes to sleep : main it will wake up at 634
-
-(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 185
-
-(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 195
-
-(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 185
-
-(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 195
-
-(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 205
-
-(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 215
-
-(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 225
-
-(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 235
-
-(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 265
-
-(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 225
-
-(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 255
-
-(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 285
-
-(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 315
-
-(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 245
-
-(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 285
-
-(alarm-multiple) (alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 315
-
-(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 365
-
-(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 205
-
-(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 225
-
-(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 245
-
-(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 265
-
-(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 285
-
-(alarm-multiple) a thread goes to sleep : thread 1 it will wake up at 305
-
-a thread goes to sleep : thread 3 it will wake up at 325
-
-(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 365
-
-(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 405
-
-(alarm-multiple) a thread goes to sleep : thread 3 it will wake up at 445
-
-(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 345
-
-(alarm-multiple) a thread goes to sleep : thread 2 it will wake up at 375
-
-(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 415
-
-(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 465
-
-(alarm-multiple) a thread goes to sleep : thread 4 it will wake up at 515
-
-(alarm-multiple) thread 0: duration=10, iteration=1, product=10
-(alarm-multiple) thread 0: duration=10, iteration=2, product=20
-(alarm-multiple) thread 1: duration=20, iteration=1, product=20
-(alarm-multiple) thread 2: duration=30, iteration=1, product=30
-(alarm-multiple) thread 0: duration=10, iteration=3, product=30
-(alarm-multiple) thread 3: duration=40, iteration=1, product=40
-(alarm-multiple) thread 0: duration=10, iteration=4, product=40
-(alarm-multiple) thread 4: duration=50, iteration=1, product=50
-(alarm-multiple) thread 0: duration=10, iteration=5, product=50
-(alarm-multiple) thread 0: duration=10, iteration=6, product=60
-(alarm-multiple) thread 0: duration=10, iteration=7, product=70
-(alarm-multiple) thread 2: duration=30, iteration=2, product=60
-(alarm-multiple) FAIL: thread 2 woke up out of order (70 > 60)!
-Kernel PANIC at ../../tests/threads/tests.c:99 in fail(): test failed
-Call stack: 0xc0028419 0xc002a2f5 0xc002a6c6 0xc002a751 0xc002a33b 0xc00207d1 0xc0020771.
+(alarm-multiple) a thread goes to sleep : thread 0 it will wake up at 176, the time now is : 70
+(alarm-multiple) and the list in order :
+   THREAD ID [3] / NAME [thread 0] / WAKE TIME [176] / TIME NOW [97]
+   THREAD ID [4] / NAME [thread 1] / WAKE TIME [186] / TIME NOW [105]
+   THREAD ID [5] / NAME [thread 2] / WAKE TIME [196] / TIME NOW [114]
+   THREAD ID [6] / NAME [thread 3] / WAKE TIME [206] / TIME NOW [123]
+   THREAD ID [7] / NAME [thread 4] / WAKE TIME [216] / TIME NOW [132]
+   THREAD ID [1] / NAME [main] / WAKE TIME [634] / TIME NOW [141]
+Kernel PANIC at ../../threads/thread.c:236 in thread_block(): assertion `intr_get_level () == INTR_OFF' failed.
+Call stack: 0xc0028589 0xc0020d5b 0xc0023c84 0xc002a55e 0xc00210d2.
 The `backtrace' program can make call stacks useful.
 Read "Backtraces" in the "Debugging Tools" chapter
 of the Pintos documentation for more information.
-Timer: 739 ticks
-Thread: 0 idle ticks, 739 kernel ticks, 0 user ticks
-Console: 4473 characters output
+Timer: 149 ticks
+Thread: 0 idle ticks, 149 kernel ticks, 0 user ticks
+Console: 1517 characters output
 Keyboard: 0 keys pressed
 Powering off..
