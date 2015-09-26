@@ -1,2 +1,8 @@
 FAIL
-First iteration does not list all threads 0...15
+Kernel panic in run: PANIC at ../../threads/synch.c:195 in lock_acquire(): assertion `lock != NULL' failed.
+Call stack: 0xc0028539 0xc0022b81 0xc002ba87 0xc0021102
+Translation of call stack:
+0xc0028539: debug_panic (.../../lib/kernel/debug.c:38)
+0xc0022b81: lock_acquire (...../../threads/synch.c:196)
+0xc002ba87: simple_thread_func (...hreads/priority-fifo.c:95)
+0xc0021102: kernel_thread (..../../threads/thread.c:457)

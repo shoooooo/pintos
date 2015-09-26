@@ -223,6 +223,19 @@ thread_create (const char *name, int priority,
   return tid;
 }
 
+////>
+
+static bool compare_priority (const struct list_elem *a, const struct list_elem *b, void *aux UNUSED) {
+
+  const struct thread *A = list_entry(a, struct thread, elem);
+  const struct thread *B = list_entry(b, struct thread, elem);
+  return A->priority > B->priority;
+
+
+}
+
+////<
+
 /* Puts the current thread to sleep.  It will not be scheduled
    again until awoken by thread_unblock().
 
@@ -504,10 +517,30 @@ alloc_frame (struct thread *t, size_t size)
 static struct thread *
 next_thread_to_run (void) 
 {
+  ////> NEW IMPLEMENTATION
+  // struct list_elem *max_priority_elem;
+  // struct list_elem *e;
+  // int max_priority_int = -1;
+  // if (!list_empty (&ready_list)) {
+  //   for (e = list_begin (&ready_list); e != list_end (&ready_list); e = list_next (e)) {
+  //     struct thread *f = list_entry (e, struct thread, elem);
+  //     if(f->priority > max_priority_int) {
+  //       max_priority_elem = &f->elem;
+  //       max_priority_int = f->priority;
+
+  //     }
+     
+  //   }
+  // }
+  ////< NEW IMPLEMENTATION
   if (list_empty (&ready_list))
     return idle_thread;
-  else
-    return list_entry (list_pop_front (&ready_list), struct thread, elem);
+  else {
+    //return list_entry (list_remove (&max_priority_elem), struct thread, elem); ////= NEW IMPLEMENTATION
+
+    list_sort(&ready_list, compare_priority, NULL);
+    return list_entry (list_pop_front (&ready_list), struct thread, elem); //[ch] pop_front to remove
+  }
 }
 
 /* Completes a thread switch by activating the new thread's page
@@ -610,6 +643,7 @@ thread_freeze (void)
   schedule ();
   intr_set_level (old_level);
 }
+
 
 
 ////< NEW IMPLEMENTATION
