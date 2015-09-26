@@ -13,3 +13,7 @@ perl: warning: Falling back to the standard locale ("C").
 00000000000e[     ] user_shortcut: old-style syntax detected
 00000000000i[     ] installing nogui module as the Bochs GUI
 00000000000i[     ] using log file bochsout.txt
+========================================================================
+Bochs is exiting with the following message:
+[UNMP ] Shutdown port: shutdown requested
+========================================================================

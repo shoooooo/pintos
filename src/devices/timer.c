@@ -133,24 +133,26 @@ timer_sleep (int64_t ticks)
   s->morning = end;
   //list_insert_ordered (&sleeper_list, &s->elem, compare_morning, NULL);
   
-
+  intr_disable();//intr off -> when does it become enabled agagin?
   list_push_back(&sleeper_list, &s->elem);
   list_sort(&sleeper_list, compare_morning, NULL);
   struct list_elem *e;
-  msg("a thread goes to sleep : %s it will wake up at %lld, the time now is : %lld", s->t->name, s->morning, timer_ticks());
-  msg("and the list in order :");
-      for (e = list_begin (&sleeper_list); e != list_end (&sleeper_list);
-           e = list_next (e))
-        {
-          struct sleeper *f = list_entry (e, struct sleeper, elem);
-          //printf("   THREAD NAME [%s]    WAKE TIME [%lld]\n", f->t->name, f->morning);
-          printf("   THREAD ID [%d] / NAME [%s] / WAKE TIME [%lld] / TIME NOW [%lld]\n", f->t->tid,f->t->name, f->morning, timer_ticks());
-        }
+  
+  //[ok]printf("    Go to SLEEP : [%s] to wake up at [%lld], now [%lld]\n", s->t->name, s->morning, timer_ticks());
+  // msg("and the list in order :");
+  //     for (e = list_begin (&sleeper_list); e != list_end (&sleeper_list);
+  //          e = list_next (e))
+  //       {
+  //         struct sleeper *f = list_entry (e, struct sleeper, elem);
+  //         //printf("   THREAD NAME [%s]    WAKE TIME [%lld]\n", f->t->name, f->morning);
+  //         printf("   THREAD ID [%d] / NAME [%s] / WAKE TIME [%lld] / TIME NOW [%lld]\n", f->t->tid,f->t->name, f->morning, timer_ticks());
+  //       }
+  
   thread_block();
-  if(s->t->status == THREAD_READY) {
-
-      thread_yield();
-  }
+  // if(s->t->status == THREAD_READY) {
+  //     intr_enable();
+  //     thread_yield();
+  // }
 
 
   
@@ -242,16 +244,28 @@ timer_interrupt (struct intr_frame *args UNUSED)
   thread_tick ();
 
   ////> NEW IMPLEMENTATION
-  if(!list_empty(&sleeper_list)) {
-    struct list_elem *e;
-    e=list_front(&sleeper_list);
-    struct sleeper *f = list_entry(e, struct sleeper, elem);
-    if(timer_ticks() >= f->morning) { // 
-      thread_unblock(f->t);
-      list_pop_front(&sleeper_list);
-    }
+  if(timer_ticks()%100==0)
+  //  printf(" / TIC / [%lld] / \n", timer_ticks());
+  //printf("tim_int called btw whoami? / %s / %lld / %d / \n". thread_current()->name, thread_current()->tid, intr_get_level());
+  intr_disable();
+  while(1) {
+    if(!list_empty(&sleeper_list)) {
+      struct list_elem *e;
+      e=list_front(&sleeper_list);
+      struct sleeper *f = list_entry(e, struct sleeper, elem);
+      if(timer_ticks() >= f->morning) { // 
+        //[ok]printf("     [%s] time to wake up, now [%lld] morning [%lld]\n", f->t->name, timer_ticks(), f->morning);
+        //[ok]printf("     [%s] really sleeping? [%d]\n", f->t->name, f->t->status);
+        thread_unblock(f->t);
+        list_pop_front(&sleeper_list);
+      }
+      else break;
 
+    }
+    else break;
   }
+  //debug_backtrace_all();
+  //intr_enable();
 
   ////< NEW INPLEMENTATION
 }

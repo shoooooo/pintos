@@ -1,9 +1,1 @@
-FAIL
-Kernel panic in run: PANIC at ../../threads/thread.c:236 in thread_block(): assertion `intr_get_level () == INTR_OFF' failed.
-Call stack: 0xc0028589 0xc0020d5b 0xc0023c84 0xc002a55e 0xc00210d2
-Translation of call stack:
-0xc0028589: debug_panic (.../../lib/kernel/debug.c:38)
-0xc0020d5b: thread_block (..../../threads/thread.c:238)
-0xc0023c84: timer_sleep (...../../devices/timer.c:150)
-0xc002a55e: sleeper (.../threads/alarm-wait.c:148)
-0xc00210d2: kernel_thread (..../../threads/thread.c:444)
+PASS

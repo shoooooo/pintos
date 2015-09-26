@@ -13,27 +13,15 @@ Executing 'alarm-single':
 (alarm-single) thread 1 sleeps 20 ticks each time, and so on.
 (alarm-single) If successful, product of iteration count and
 (alarm-single) sleep duration will appear in nondescending order.
-(alarm-single) a thread goes to sleep : thread 0 it will wake up at 174, the time now is : 70
-(alarm-single) and the list in order :
-   THREAD ID [3] / NAME [thread 0] / WAKE TIME [174] / TIME NOW [95]
-   THREAD ID [4] / NAME [thread 1] / WAKE TIME [184] / TIME NOW [104]
-   THREAD ID [5] / NAME [thread 2] / WAKE TIME [194] / TIME NOW [113]
-   THREAD ID [6] / NAME [thread 3] / WAKE TIME [204] / TIME NOW [122]
-(alarm-single) a thread goes to sleep : thread 3 it will wake up at 204, the time now is : 87
-(alarm-single) and the list in order :
-   THREAD ID [3] / NAME [thread 0] / WAKE TIME [174] / TIME NOW [149]
-   THREAD ID [4] / NAME [thread 1] / WAKE TIME [184] / TIME NOW [158]
-   THREAD ID [5] / NAME [thread 2] / WAKE TIME [194] / TIME NOW [167]
-   THREAD ID [6] / NAME [thread 3] / WAKE TIME [204] / TIME NOW [176]
-   THREAD ID [7] / NAME [thread 4] / WAKE TIME [214] / TIME NOW [184]
-   THREAD ID [1] / NAME [main] / WAKE TIME [333] / TIME NOW [193]
-Kernel PANIC at ../../threads/thread.c:236 in thread_block(): assertion `intr_get_level () == INTR_OFF' failed.
-Call stack: 0xc0028589 0xc0020d5b 0xc0023c84 0xc002a55e 0xc00210d2.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 202 ticks
-Thread: 0 idle ticks, 202 kernel ticks, 0 user ticks
-Console: 1910 characters output
+(alarm-single) thread 0: duration=10, iteration=1, product=10
+(alarm-single) thread 1: duration=20, iteration=1, product=20
+(alarm-single) thread 2: duration=30, iteration=1, product=30
+(alarm-single) thread 3: duration=40, iteration=1, product=40
+(alarm-single) thread 4: duration=50, iteration=1, product=50
+(alarm-single) end
+Execution of 'alarm-single' complete.
+Timer: 327 ticks
+Thread: 249 idle ticks, 78 kernel ticks, 0 user ticks
+Console: 983 characters output
 Keyboard: 0 keys pressed
 Powering off..
