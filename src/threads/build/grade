@@ -7,7 +7,7 @@ warning: tests/threads/mlfqs-fair-20 not tested, assuming failure
 warning: tests/threads/mlfqs-nice-2 not tested, assuming failure
 warning: tests/threads/mlfqs-nice-10 not tested, assuming failure
 warning: tests/threads/mlfqs-block not tested, assuming failure
-TOTAL TESTING SCORE: 8.9%
+TOTAL TESTING SCORE: 23.2%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -15,11 +15,11 @@ SUMMARY BY TEST SET
 
 Test Set                                      Pts Max  % Ttl  % Max
 --------------------------------------------- --- --- ------ ------
-tests/threads/Rubric.alarm                      8/ 18   8.9%/ 20.0%
-tests/threads/Rubric.priority                   0/ 38   0.0%/ 40.0%
+tests/threads/Rubric.alarm                     18/ 18  20.0%/ 20.0%
+tests/threads/Rubric.priority                   3/ 38   3.2%/ 40.0%
 tests/threads/Rubric.mlfqs                      0/ 37   0.0%/ 40.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                   8.9%/100.0%
+Total                                                  23.2%/100.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -28,19 +28,19 @@ SUMMARY OF INDIVIDUAL TESTS
 Functionality and robustness of alarm clock (tests/threads/Rubric.alarm):
 	     4/ 4 tests/threads/alarm-single
 	     4/ 4 tests/threads/alarm-multiple
-	  ** 0/ 4 tests/threads/alarm-simultaneous
-	  ** 0/ 4 tests/threads/alarm-priority
+	     4/ 4 tests/threads/alarm-simultaneous
+	     4/ 4 tests/threads/alarm-priority
 
-	  ** 0/ 1 tests/threads/alarm-zero
-	  ** 0/ 1 tests/threads/alarm-negative
+	     1/ 1 tests/threads/alarm-zero
+	     1/ 1 tests/threads/alarm-negative
 
 	- Section summary.
-	      2/  6 tests passed
-	      8/ 18 points subtotal
+	      6/  6 tests passed
+	     18/ 18 points subtotal
 
 Functionality of priority scheduler (tests/threads/Rubric.priority):
 	  ** 0/ 3 tests/threads/priority-change
-	  ** 0/ 3 tests/threads/priority-preempt
+	     3/ 3 tests/threads/priority-preempt
 
 	  ** 0/ 3 tests/threads/priority-fifo
 	  ** 0/ 3 tests/threads/priority-sema
@@ -55,8 +55,8 @@ Functionality of priority scheduler (tests/threads/Rubric.priority):
 	  ** 0/ 3 tests/threads/priority-donate-lower
 
 	- Section summary.
-	      0/ 12 tests passed
-	      0/ 38 points subtotal
+	      1/ 12 tests passed
+	      3/ 38 points subtotal
 
 Functionality of advanced scheduler (tests/threads/Rubric.mlfqs):
 	  ** 0/ 5 tests/threads/mlfqs-load-1
@@ -80,433 +80,6 @@ Functionality of advanced scheduler (tests/threads/Rubric.mlfqs):
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-DETAILS OF tests/threads/alarm-simultaneous FAILURE:
-
-Test output failed to match any acceptable form.
-
-Acceptable output:
-  (alarm-simultaneous) begin
-  (alarm-simultaneous) Creating 3 threads to sleep 5 times each.
-  (alarm-simultaneous) Each thread sleeps 10 ticks each time.
-  (alarm-simultaneous) Within an iteration, all threads should wake up on the same tick.
-  (alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
-  (alarm-simultaneous) iteration 0, thread 1: woke up 0 ticks later
-  (alarm-simultaneous) iteration 0, thread 2: woke up 0 ticks later
-  (alarm-simultaneous) iteration 1, thread 0: woke up 10 ticks later
-  (alarm-simultaneous) iteration 1, thread 1: woke up 0 ticks later
-  (alarm-simultaneous) iteration 1, thread 2: woke up 0 ticks later
-  (alarm-simultaneous) iteration 2, thread 0: woke up 10 ticks later
-  (alarm-simultaneous) iteration 2, thread 1: woke up 0 ticks later
-  (alarm-simultaneous) iteration 2, thread 2: woke up 0 ticks later
-  (alarm-simultaneous) iteration 3, thread 0: woke up 10 ticks later
-  (alarm-simultaneous) iteration 3, thread 1: woke up 0 ticks later
-  (alarm-simultaneous) iteration 3, thread 2: woke up 0 ticks later
-  (alarm-simultaneous) iteration 4, thread 0: woke up 10 ticks later
-  (alarm-simultaneous) iteration 4, thread 1: woke up 0 ticks later
-  (alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
-  (alarm-simultaneous) end
-Differences in `diff -u' format:
-  (alarm-simultaneous) begin
-  (alarm-simultaneous) Creating 3 threads to sleep 5 times each.
-  (alarm-simultaneous) Each thread sleeps 10 ticks each time.
-  (alarm-simultaneous) Within an iteration, all threads should wake up on the same tick.
-- (alarm-simultaneous) iteration 0, thread 0: woke up after 10 ticks
-+     Go to SLEEP : [thread 0] to wake up at [62], now [62]
-+      [thread 0] time to wake up, now [63] morning [62]
-+      [thread 0] really sleeping? [2]
-+     Go to SLEEP : [thread 1] to wake up at [66], now [65]
-+      [thread 1] time to wake up, now [66] morning [66]
-+      [thread 1] really sleeping? [2]
-+     Go to SLEEP : [thread 0] to wake up at [165], now [69]
-+     Go to SLEEP : [thread 1] to wake up at [165], now [69]
-+     Go to SLEEP : [main] to wake up at [321], now [71]
-+     Go to SLEEP : [thread 2] to wake up at [74], now [73]
-+      [thread 2] time to wake up, now [74] morning [74]
-+      [thread 2] really sleeping? [2]
-+     Go to SLEEP : [thread 2] to wake up at [165], now [75]
-+  / TIC / [100] / 
-+      [thread 0] time to wake up, now [165] morning [165]
-+      [thread 0] really sleeping? [2]
-+      [thread 1] time to wake up, now [166] morning [165]
-+      [thread 1] really sleeping? [2]
-+      [thread 2] time to wake up, now [167] morning [165]
-+      [thread 2] really sleeping? [2]
-+     Go to SLEEP : [thread 0] to wake up at [175], now [168]
-+     Go to SLEEP : [thread 1] to wake up at [175], now [168]
-+     Go to SLEEP : [thread 2] to wake up at [175], now [168]
-+      [thread 0] time to wake up, now [175] morning [175]
-+      [thread 0] really sleeping? [2]
-+      [thread 1] time to wake up, now [176] morning [175]
-+      [thread 1] really sleeping? [2]
-+      [thread 2] time to wake up, now [177] morning [175]
-+      [thread 2] really sleeping? [2]
-+     Go to SLEEP : [thread 0] to wake up at [185], now [178]
-+     Go to SLEEP : [thread 1] to wake up at [185], now [178]
-+     Go to SLEEP : [thread 2] to wake up at [185], now [178]
-+      [thread 0] time to wake up, now [185] morning [185]
-+      [thread 0] really sleeping? [2]
-+      [thread 1] time to wake up, now [186] morning [185]
-+      [thread 1] really sleeping? [2]
-+      [thread 2] time to wake up, now [187] morning [185]
-+      [thread 2] really sleeping? [2]
-+     Go to SLEEP : [thread 0] to wake up at [195], now [188]
-+     Go to SLEEP : [thread 1] to wake up at [195], now [188]
-+     Go to SLEEP : [thread 2] to wake up at [195], now [188]
-+      [thread 0] time to wake up, now [195] morning [195]
-+      [thread 0] really sleeping? [2]
-+      [thread 1] time to wake up, now [196] morning [195]
-+      [thread 1] really sleeping? [2]
-+      [thread 2] time to wake up, now [197] morning [195]
-+      [thread 2] really sleeping? [2]
-+     Go to SLEEP : [thread 0] to wake up at [205], now [198]
-+     Go to SLEEP : [thread 1] to wake up at [205], now [198]
-+     Go to SLEEP : [thread 2] to wake up at [205], now [198]
-+  / TIC / [200] / 
-+      [thread 0] time to wake up, now [205] morning [205]
-+      [thread 0] really sleeping? [2]
-+      [thread 1] time to wake up, now [206] morning [205]
-+      [thread 1] really sleeping? [2]
-+      [thread 2] time to wake up, now [207] morning [205]
-+      [thread 2] really sleeping? [2]
-+  / TIC / [300] / 
-+      [main] time to wake up, now [321] morning [321]
-+      [main] really sleeping? [2]
-+ (alarm-simultaneous) iteration 0, thread 0: woke up after 13 ticks
-  (alarm-simultaneous) iteration 0, thread 1: woke up 0 ticks later
-  (alarm-simultaneous) iteration 0, thread 2: woke up 0 ticks later
-  (alarm-simultaneous) iteration 1, thread 0: woke up 10 ticks later
-  (alarm-simultaneous) iteration 1, thread 1: woke up 0 ticks later
-  (alarm-simultaneous) iteration 1, thread 2: woke up 0 ticks later
-  (alarm-simultaneous) iteration 2, thread 0: woke up 10 ticks later
-  (alarm-simultaneous) iteration 2, thread 1: woke up 0 ticks later
-  (alarm-simultaneous) iteration 2, thread 2: woke up 0 ticks later
-  (alarm-simultaneous) iteration 3, thread 0: woke up 10 ticks later
-  (alarm-simultaneous) iteration 3, thread 1: woke up 0 ticks later
-  (alarm-simultaneous) iteration 3, thread 2: woke up 0 ticks later
-  (alarm-simultaneous) iteration 4, thread 0: woke up 10 ticks later
-  (alarm-simultaneous) iteration 4, thread 1: woke up 0 ticks later
-  (alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
-  (alarm-simultaneous) end
-
-OUTPUT FROM tests/threads/alarm-simultaneous:
-
-PiLo hda1
-Loading........
-Kernel command line: -q run alarm-simultaneous
-Pintos booting with 4,096 kB RAM...
-383 pages available in kernel pool.
-383 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-Boot complete.
-Executing 'alarm-simultaneous':
-(alarm-simultaneous) begin
-(alarm-simultaneous) Creating 3 threads to sleep 5 times each.
-(alarm-simultaneous) Each thread sleeps 10 ticks each time.
-(alarm-simultaneous) Within an iteration, all threads should wake up on the same tick.
-    Go to SLEEP : [thread 0] to wake up at [62], now [62]
-     [thread 0] time to wake up, now [63] morning [62]
-     [thread 0] really sleeping? [2]
-    Go to SLEEP : [thread 1] to wake up at [66], now [65]
-     [thread 1] time to wake up, now [66] morning [66]
-     [thread 1] really sleeping? [2]
-    Go to SLEEP : [thread 0] to wake up at [165], now [69]
-    Go to SLEEP : [thread 1] to wake up at [165], now [69]
-    Go to SLEEP : [main] to wake up at [321], now [71]
-    Go to SLEEP : [thread 2] to wake up at [74], now [73]
-     [thread 2] time to wake up, now [74] morning [74]
-     [thread 2] really sleeping? [2]
-    Go to SLEEP : [thread 2] to wake up at [165], now [75]
- / TIC / [100] / 
-     [thread 0] time to wake up, now [165] morning [165]
-     [thread 0] really sleeping? [2]
-     [thread 1] time to wake up, now [166] morning [165]
-     [thread 1] really sleeping? [2]
-     [thread 2] time to wake up, now [167] morning [165]
-     [thread 2] really sleeping? [2]
-    Go to SLEEP : [thread 0] to wake up at [175], now [168]
-    Go to SLEEP : [thread 1] to wake up at [175], now [168]
-    Go to SLEEP : [thread 2] to wake up at [175], now [168]
-     [thread 0] time to wake up, now [175] morning [175]
-     [thread 0] really sleeping? [2]
-     [thread 1] time to wake up, now [176] morning [175]
-     [thread 1] really sleeping? [2]
-     [thread 2] time to wake up, now [177] morning [175]
-     [thread 2] really sleeping? [2]
-    Go to SLEEP : [thread 0] to wake up at [185], now [178]
-    Go to SLEEP : [thread 1] to wake up at [185], now [178]
-    Go to SLEEP : [thread 2] to wake up at [185], now [178]
-     [thread 0] time to wake up, now [185] morning [185]
-     [thread 0] really sleeping? [2]
-     [thread 1] time to wake up, now [186] morning [185]
-     [thread 1] really sleeping? [2]
-     [thread 2] time to wake up, now [187] morning [185]
-     [thread 2] really sleeping? [2]
-    Go to SLEEP : [thread 0] to wake up at [195], now [188]
-    Go to SLEEP : [thread 1] to wake up at [195], now [188]
-    Go to SLEEP : [thread 2] to wake up at [195], now [188]
-     [thread 0] time to wake up, now [195] morning [195]
-     [thread 0] really sleeping? [2]
-     [thread 1] time to wake up, now [196] morning [195]
-     [thread 1] really sleeping? [2]
-     [thread 2] time to wake up, now [197] morning [195]
-     [thread 2] really sleeping? [2]
-    Go to SLEEP : [thread 0] to wake up at [205], now [198]
-    Go to SLEEP : [thread 1] to wake up at [205], now [198]
-    Go to SLEEP : [thread 2] to wake up at [205], now [198]
- / TIC / [200] / 
-     [thread 0] time to wake up, now [205] morning [205]
-     [thread 0] really sleeping? [2]
-     [thread 1] time to wake up, now [206] morning [205]
-     [thread 1] really sleeping? [2]
-     [thread 2] time to wake up, now [207] morning [205]
-     [thread 2] really sleeping? [2]
- / TIC / [300] / 
-     [main] time to wake up, now [321] morning [321]
-     [main] really sleeping? [2]
-(alarm-simultaneous) iteration 0, thread 0: woke up after 13 ticks
-(alarm-simultaneous) iteration 0, thread 1: woke up 0 ticks later
-(alarm-simultaneous) iteration 0, thread 2: woke up 0 ticks later
-(alarm-simultaneous) iteration 1, thread 0: woke up 10 ticks later
-(alarm-simultaneous) iteration 1, thread 1: woke up 0 ticks later
-(alarm-simultaneous) iteration 1, thread 2: woke up 0 ticks later
-(alarm-simultaneous) iteration 2, thread 0: woke up 10 ticks later
-(alarm-simultaneous) iteration 2, thread 1: woke up 0 ticks later
-(alarm-simultaneous) iteration 2, thread 2: woke up 0 ticks later
-(alarm-simultaneous) iteration 3, thread 0: woke up 10 ticks later
-(alarm-simultaneous) iteration 3, thread 1: woke up 0 ticks later
-(alarm-simultaneous) iteration 3, thread 2: woke up 0 ticks later
-(alarm-simultaneous) iteration 4, thread 0: woke up 10 ticks later
-(alarm-simultaneous) iteration 4, thread 1: woke up 0 ticks later
-(alarm-simultaneous) iteration 4, thread 2: woke up 0 ticks later
-(alarm-simultaneous) end
-Execution of 'alarm-simultaneous' complete.
-Timer: 322 ticks
-Thread: 249 idle ticks, 73 kernel ticks, 0 user ticks
-Console: 4563 characters output
-Keyboard: 0 keys pressed
-Powering off..
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/threads/alarm-priority FAILURE:
-
-Test output failed to match any acceptable form.
-
-Acceptable output:
-  (alarm-priority) begin
-  (alarm-priority) Thread priority 30 woke up.
-  (alarm-priority) Thread priority 29 woke up.
-  (alarm-priority) Thread priority 28 woke up.
-  (alarm-priority) Thread priority 27 woke up.
-  (alarm-priority) Thread priority 26 woke up.
-  (alarm-priority) Thread priority 25 woke up.
-  (alarm-priority) Thread priority 24 woke up.
-  (alarm-priority) Thread priority 23 woke up.
-  (alarm-priority) Thread priority 22 woke up.
-  (alarm-priority) Thread priority 21 woke up.
-  (alarm-priority) end
-Differences in `diff -u' format:
-  (alarm-priority) begin
-- (alarm-priority) Thread priority 30 woke up.
-- (alarm-priority) Thread priority 29 woke up.
-- (alarm-priority) Thread priority 28 woke up.
-- (alarm-priority) Thread priority 27 woke up.
-- (alarm-priority) Thread priority 26 woke up.
-+     Go to SLEEP : [priority 25] to wake up at [527], now [35]
-+     Go to SLEEP : [priority 24] to wake up at [527], now [37]
-+     Go to SLEEP : [priority 23] to wake up at [527], now [42]
-+     Go to SLEEP : [priority 22] to wake up at [527], now [51]
-+     Go to SLEEP : [priority 21] to wake up at [527], now [53]
-+     Go to SLEEP : [priority 30] to wake up at [527], now [62]
-+     Go to SLEEP : [priority 29] to wake up at [527], now [67]
-+     Go to SLEEP : [priority 28] to wake up at [527], now [76]
-+     Go to SLEEP : [priority 27] to wake up at [527], now [85]
-+     Go to SLEEP : [priority 26] to wake up at [527], now [88]
-+  / TIC / [100] / 
-+  / TIC / [200] / 
-+  / TIC / [300] / 
-+  / TIC / [400] / 
-+  / TIC / [500] / 
-+      [priority 25] time to wake up, now [527] morning [527]
-+      [priority 25] really sleeping? [2]
-+      [priority 24] time to wake up, now [528] morning [527]
-+      [priority 24] really sleeping? [2]
-+      [priority 23] time to wake up, now [529] morning [527]
-+      [priority 23] really sleeping? [2]
-+      [priority 22] time to wake up, now [530] morning [527]
-+      [priority 22] really sleeping? [2]
-  (alarm-priority) Thread priority 25 woke up.
-  (alarm-priority) Thread priority 24 woke up.
-  (alarm-priority) Thread priority 23 woke up.
-  (alarm-priority) Thread priority 22 woke up.
-+      [priority 21] time to wake up, now [531] morning [527]
-+      [priority 21] really sleeping? [2]
-+      [priority 30] time to wake up, now [532] morning [527]
-+      [priority 30] really sleeping? [2]
-+      [priority 29] time to wake up, now [533] morning [527]
-+      [priority 29] really sleeping? [2]
-+      [priority 28] time to wake up, now [534] morning [527]
-+      [priority 28] really sleeping? [2]
-  (alarm-priority) Thread priority 21 woke up.
-+ (alarm-priority) Thread priority 30 woke up.
-+ (alarm-priority) Thread priority 29 woke up.
-+ (alarm-priority) Thread priority 28 woke up.
-+      [priority 27] time to wake up, now [535] morning [527]
-+      [priority 27] really sleeping? [2]
-+      [priority 26] time to wake up, now [536] morning [527]
-+      [priority 26] really sleeping? [2]
-+ (alarm-priority) Thread priority 27 woke up.
-+ (alarm-priority) Thread priority 26 woke up.
-  (alarm-priority) end
-
-OUTPUT FROM tests/threads/alarm-priority:
-
-PiLo hda1
-Loading........
-Kernel command line: -q run alarm-priority
-Pintos booting with 4,096 kB RAM...
-383 pages available in kernel pool.
-383 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-Boot complete.
-Executing 'alarm-priority':
-(alarm-priority) begin
-    Go to SLEEP : [priority 25] to wake up at [527], now [35]
-    Go to SLEEP : [priority 24] to wake up at [527], now [37]
-    Go to SLEEP : [priority 23] to wake up at [527], now [42]
-    Go to SLEEP : [priority 22] to wake up at [527], now [51]
-    Go to SLEEP : [priority 21] to wake up at [527], now [53]
-    Go to SLEEP : [priority 30] to wake up at [527], now [62]
-    Go to SLEEP : [priority 29] to wake up at [527], now [67]
-    Go to SLEEP : [priority 28] to wake up at [527], now [76]
-    Go to SLEEP : [priority 27] to wake up at [527], now [85]
-    Go to SLEEP : [priority 26] to wake up at [527], now [88]
- / TIC / [100] / 
- / TIC / [200] / 
- / TIC / [300] / 
- / TIC / [400] / 
- / TIC / [500] / 
-     [priority 25] time to wake up, now [527] morning [527]
-     [priority 25] really sleeping? [2]
-     [priority 24] time to wake up, now [528] morning [527]
-     [priority 24] really sleeping? [2]
-     [priority 23] time to wake up, now [529] morning [527]
-     [priority 23] really sleeping? [2]
-     [priority 22] time to wake up, now [530] morning [527]
-     [priority 22] really sleeping? [2]
-(alarm-priority) Thread priority 25 woke up.
-(alarm-priority) Thread priority 24 woke up.
-(alarm-priority) Thread priority 23 woke up.
-(alarm-priority) Thread priority 22 woke up.
-     [priority 21] time to wake up, now [531] morning [527]
-     [priority 21] really sleeping? [2]
-     [priority 30] time to wake up, now [532] morning [527]
-     [priority 30] really sleeping? [2]
-     [priority 29] time to wake up, now [533] morning [527]
-     [priority 29] really sleeping? [2]
-     [priority 28] time to wake up, now [534] morning [527]
-     [priority 28] really sleeping? [2]
-(alarm-priority) Thread priority 21 woke up.
-(alarm-priority) Thread priority 30 woke up.
-(alarm-priority) Thread priority 29 woke up.
-(alarm-priority) Thread priority 28 woke up.
-     [priority 27] time to wake up, now [535] morning [527]
-     [priority 27] really sleeping? [2]
-     [priority 26] time to wake up, now [536] morning [527]
-     [priority 26] really sleeping? [2]
-(alarm-priority) Thread priority 27 woke up.
-(alarm-priority) Thread priority 26 woke up.
-(alarm-priority) end
-Execution of 'alarm-priority' complete.
-Timer: 550 ticks
-Thread: 442 idle ticks, 111 kernel ticks, 0 user ticks
-Console: 2547 characters output
-Keyboard: 0 keys pressed
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/threads/alarm-zero FAILURE:
-
-Test output failed to match any acceptable form.
-
-Acceptable output:
-  (alarm-zero) begin
-  (alarm-zero) PASS
-  (alarm-zero) end
-Differences in `diff -u' format:
-  (alarm-zero) begin
-+     Go to SLEEP : [main] to wake up at [26], now [27]
-+      [main] time to wake up, now [28] morning [26]
-+      [main] really sleeping? [2]
-  (alarm-zero) PASS
-  (alarm-zero) end
-
-OUTPUT FROM tests/threads/alarm-zero:
-
-PiLo hda1
-Loading........
-Kernel command line: -q run alarm-zero
-Pintos booting with 4,096 kB RAM...
-383 pages available in kernel pool.
-383 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-Boot complete.
-Executing 'alarm-zero':
-(alarm-zero) begin
-    Go to SLEEP : [main] to wake up at [26], now [27]
-     [main] time to wake up, now [28] morning [26]
-     [main] really sleeping? [2]
-(alarm-zero) PASS
-(alarm-zero) end
-Execution of 'alarm-zero' complete.
-Timer: 29 ticks
-Thread: 2 idle ticks, 27 kernel ticks, 0 user ticks
-Console: 519 characters output
-Keyboard: 0 keys pressed
-Powering off..
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/threads/alarm-negative FAILURE:
-
-Test output failed to match any acceptable form.
-
-Acceptable output:
-  (alarm-negative) begin
-  (alarm-negative) PASS
-  (alarm-negative) end
-Differences in `diff -u' format:
-  (alarm-negative) begin
-+     Go to SLEEP : [main] to wake up at [-73], now [28]
-+      [main] time to wake up, now [29] morning [-73]
-+      [main] really sleeping? [2]
-  (alarm-negative) PASS
-  (alarm-negative) end
-
-OUTPUT FROM tests/threads/alarm-negative:
-
-PiLo hda1
-Loading........
-Kernel command line: -q run alarm-negative
-Pintos booting with 4,096 kB RAM...
-383 pages available in kernel pool.
-383 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-Boot complete.
-Executing 'alarm-negative':
-(alarm-negative) begin
-    Go to SLEEP : [main] to wake up at [-73], now [28]
-     [main] time to wake up, now [29] morning [-73]
-     [main] really sleeping? [2]
-(alarm-negative) PASS
-(alarm-negative) end
-Execution of 'alarm-negative' complete.
-Timer: 30 ticks
-Thread: 2 idle ticks, 28 kernel ticks, 0 user ticks
-Console: 545 characters output
-Keyboard: 0 keys pressed
-Powering off..
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
 DETAILS OF tests/threads/priority-change FAILURE:
 
 Test output failed to match any acceptable form.
@@ -522,9 +95,10 @@ Acceptable output:
 Differences in `diff -u' format:
   (priority-change) begin
   (priority-change) Creating a high-priority thread 2.
-- (priority-change) Thread 2 now lowering priority.
-  (priority-change) Thread 2 should have just lowered its priority.
-- (priority-change) Thread 2 exiting.
+  (priority-change) Thread 2 now lowering priority.
+- (priority-change) Thread 2 should have just lowered its priority.
+  (priority-change) Thread 2 exiting.
++ (priority-change) Thread 2 should have just lowered its priority.
   (priority-change) Thread 2 should have just exited.
   (priority-change) end
 
@@ -541,13 +115,13 @@ Boot complete.
 Executing 'priority-change':
 (priority-change) begin
 (priority-change) Creating a high-priority thread 2.
+(priority-change) Thread 2 now lowering priority.
+(priority-change) Thread 2 exiting.
 (priority-change) Thread 2 should have just lowered its priority.
 (priority-change) Thread 2 should have just exited.
 (priority-change) end
 Execution of 'priority-change' complete.
-(priority-change) Thread 2 now lowering priority.
-(priority-change) Thread 2 exiting.
-Timer: 60 ticks
+Timer: 73 ticks
 Thread: 0 idle ticks, 76 kernel ticks, 0 user ticks
 Console: 645 characters output
 Keyboard: 0 keys pressed
@@ -555,57 +129,15 @@ Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-DETAILS OF tests/threads/priority-preempt FAILURE:
-
-Test output failed to match any acceptable form.
-
-Acceptable output:
-  (priority-preempt) begin
-  (priority-preempt) Thread high-priority iteration 0
-  (priority-preempt) Thread high-priority iteration 1
-  (priority-preempt) Thread high-priority iteration 2
-  (priority-preempt) Thread high-priority iteration 3
-  (priority-preempt) Thread high-priority iteration 4
-  (priority-preempt) Thread high-priority done!
-  (priority-preempt) The high-priority thread should have already completed.
-  (priority-preempt) end
-Differences in `diff -u' format:
-  (priority-preempt) begin
-- (priority-preempt) Thread high-priority iteration 0
-- (priority-preempt) Thread high-priority iteration 1
-- (priority-preempt) Thread high-priority iteration 2
-- (priority-preempt) Thread high-priority iteration 3
-- (priority-preempt) Thread high-priority iteration 4
-- (priority-preempt) Thread high-priority done!
-  (priority-preempt) The high-priority thread should have already completed.
-  (priority-preempt) end
-
-OUTPUT FROM tests/threads/priority-preempt:
-
-PiLo hda1
-Loading........
-Kernel command line: -q run priority-preempt
-Pintos booting with 4,096 kB RAM...
-383 pages available in kernel pool.
-383 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-Boot complete.
-Executing 'priority-preempt':
-(priority-preempt) begin
-(priority-preempt) The high-priority thread should have already completed.
-(priority-preempt) end
-Execution of 'priority-preempt' complete.
-Timer: 48 ticks
-Thread: 0 idle ticks, 51 kernel ticks, 0 user ticks
-Console: 468 characters output
-Keyboard: 0 keys pressed
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
 DETAILS OF tests/threads/priority-fifo FAILURE:
 
-First iteration does not list all threads 0...15
+Kernel panic in run: PANIC at ../../threads/synch.c:195 in lock_acquire(): assertion `lock != NULL' failed.
+Call stack: 0xc0028539 0xc0022b81 0xc002ba87 0xc002110d
+Translation of call stack:
+0xc0028539: debug_panic (.../../lib/kernel/debug.c:38)
+0xc0022b81: lock_acquire (...../../threads/synch.c:196)
+0xc002ba87: simple_thread_func (...hreads/priority-fifo.c:95)
+0xc002110d: kernel_thread (..../../threads/thread.c:462)
 
 OUTPUT FROM tests/threads/priority-fifo:
 
@@ -621,33 +153,17 @@ Executing 'priority-fifo':
 (priority-fifo) begin
 (priority-fifo) 16 threads will iterate 16 times in the same order each time.
 (priority-fifo) If the order varies then there is a bug.
-(priority-fifo) iteration: 0 1 0 1 2 3 0 1 2 3 4 5 0 1 2 3
-(priority-fifo) iteration: 4 5 6 / TIC / [100] / 
- 0 1 2 3 4 5 6 7 8 0 1 2 3
-(priority-fifo) iteration: 4 5 6 7 8 9 10 0 1 2 3 4 5 6 7 8
-(priority-fifo) iteration: 9 10 11 0 1 2 3 4 5 6 7 8 9 10 11 12
-(priority-fifo) iteration: 13 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
-(priority-fifo) iteration: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-(priority-fifo) iteration: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-(priority-fifo) iteration: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-(priority-fifo) iteration: 0 / TIC / [200] / 
- 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-(priority-fifo) iteration: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-(priority-fifo) iteration: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-(priority-fifo) iteration: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-(priority-fifo) iteration: 2 3 4 5 6 7 8 9 10 11 12 13 14 15 4 5
-(priority-fifo) iteration: 6 7 8 9 10 11 12 13 14 15 6 7 8 9 10 11
-(priority-fifo) iteration: 12 13 14 15 7 8 9 10 11 12 13 14 15 9 10 11
-(priority-fifo) iteration: 12 13 14 15 11 12 13 14 15 12 13 14 15 14 15 15
 (priority-fifo) end
-Execution of 'priority-fifo' complete.
-Timer: 288 ticks
-Thread: 0 idle ticks, 291 kernel ticks, 0 user ticks
-Console: 1591 ch / TIC / [300] / 
-aracters output
+Kernel PANIC at ../../threads/synch.c:195 in lock_acquire(): assertion `lock != NULL' failed.
+Call stack: 0xc0028539 0xc0022b81 0xc002ba87 0xc002110d.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 82 ticks
+Thread: 0 idle ticks, 82 kernel ticks, 0 user ticks
+Console: 779 characters output
 Keyboard: 0 keys pressed
-Powering off...
-
+Powering off..
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/threads/priority-sema FAILURE:
@@ -698,9 +214,7 @@ Differences in `diff -u' format:
 - (priority-sema) Thread priority 22 woke up.
   (priority-sema) Back in main thread.
 - (priority-sema) Thread priority 21 woke up.
-- (priority-sema) Back in main thread.
-+ (priority-sema) Back in / TIC / [100] / 
-+  main thread.
+  (priority-sema) Back in main thread.
   (priority-sema) end
 
 OUTPUT FROM tests/threads/priority-sema:
@@ -724,13 +238,12 @@ Executing 'priority-sema':
 (priority-sema) Back in main thread.
 (priority-sema) Back in main thread.
 (priority-sema) Back in main thread.
-(priority-sema) Back in / TIC / [100] / 
- main thread.
+(priority-sema) Back in main thread.
 (priority-sema) end
 Execution of 'priority-sema' complete.
-Timer: 113 ticks
-Thread: 0 idle ticks, 116 kernel ticks, 0 user ticks
-Console: 768 characters output
+Timer: 114 ticks
+Thread: 0 idle ticks, 118 kernel ticks, 0 user ticks
+Console: 750 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -776,20 +289,15 @@ Acceptable output:
 Differences in `diff -u' format:
   (priority-condvar) begin
   (priority-condvar) Thread priority 23 starting.
-- (priority-condvar) Thread priority 22 starting.
+  (priority-condvar) Thread priority 22 starting.
   (priority-condvar) Thread priority 21 starting.
-- (priority-condvar) Thread priority 30 starting.
+  (priority-condvar) Thread priority 30 starting.
   (priority-condvar) Thread priority 29 starting.
-- (priority-condvar) Thread priority 28 starting.
+  (priority-condvar) Thread priority 28 starting.
   (priority-condvar) Thread priority 27 starting.
-- (priority-condvar) Thread priority 26 starting.
+  (priority-condvar) Thread priority 26 starting.
   (priority-condvar) Thread priority 25 starting.
-+ (priority-condvar) Thread priority 30 starting.
-+ (priority-condvar) Thread priority 26 starting.
-+ (priority-condvar) Thread priority 22 starting / TIC / [100] / 
-+ .
   (priority-condvar) Thread priority 24 starting.
-+ (priority-condvar) Thread priority 28 starting.
   (priority-condvar) Signaling...
 - (priority-condvar) Thread priority 30 woke up.
   (priority-condvar) Signaling...
@@ -825,16 +333,15 @@ Boot complete.
 Executing 'priority-condvar':
 (priority-condvar) begin
 (priority-condvar) Thread priority 23 starting.
+(priority-condvar) Thread priority 22 starting.
 (priority-condvar) Thread priority 21 starting.
-(priority-condvar) Thread priority 29 starting.
-(priority-condvar) Thread priority 27 starting.
-(priority-condvar) Thread priority 25 starting.
 (priority-condvar) Thread priority 30 starting.
-(priority-condvar) Thread priority 26 starting.
-(priority-condvar) Thread priority 22 starting / TIC / [100] / 
-.
-(priority-condvar) Thread priority 24 starting.
+(priority-condvar) Thread priority 29 starting.
 (priority-condvar) Thread priority 28 starting.
+(priority-condvar) Thread priority 27 starting.
+(priority-condvar) Thread priority 26 starting.
+(priority-condvar) Thread priority 25 starting.
+(priority-condvar) Thread priority 24 starting.
 (priority-condvar) Signaling...
 (priority-condvar) Signaling...
 (priority-condvar) Signaling...
@@ -848,8 +355,18 @@ Executing 'priority-condvar':
 (priority-condvar) end
 Execution of 'priority-condvar' complete.
 Timer: 173 ticks
-Thread: 0 idle ticks, 177 kernel ticks, 0 user ticks
-Console: 1213 characters output
+Thread: 0 idle ticks, 176 kernel ticks, 0 user ticks
+(priority-condvar) Thread priority 24 woke up.
+(priority-condvar) Thread priority 28 woke up.
+(priority-condvar) Thread priority 21 woke up.
+(priority-condvar) Thread priority 30 woke up.
+(priority-condvar) Thread priority 27 woke up.
+(priority-condvar) Thread priority 26 woke up.
+(priority-condvar) Thread priority 22 woke up.
+(priority-condvar) Thread priority 29 woke up.
+(priority-condvar) Thread priority 25 woke up.
+(priority-condvar) Thread priority 23 woke up.
+Console: 1665 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -903,12 +420,11 @@ Executing 'priority-donate-one':
 (priority-donate-one) end
 Execution of 'priority-donate-one' complete.
 Timer: 86 ticks
-Thread: 0 idle ticks, 88 kernel ticks, 0 user ticks
+Thread: 0 idle ticks, 89 kernel ticks, 0 user ticks
 Console: 733 characters output
- / TIC / [100] / 
 Keyboard: 0 keys pressed
 Powering off...
-(priority-donate-one) acquire1: got 
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 DETAILS OF tests/threads/priority-donate-multiple FAILURE:
@@ -932,20 +448,20 @@ Differences in `diff -u' format:
   (priority-donate-multiple) begin
 - (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 32.
 - (priority-donate-multiple) Main thread should have priority 33.  Actual priority: 33.
-- (priority-donate-multiple) Thread b acquired lock b.
-- (priority-donate-multiple) Thread b finished.
 + (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 31.
 + (priority-donate-multiple) Main thread should have priority 33.  Actual priority: 31.
+  (priority-donate-multiple) Thread b acquired lock b.
+  (priority-donate-multiple) Thread b finished.
   (priority-donate-multiple) Thread b should have just finished.
 - (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 32.
 - (priority-donate-multiple) Thread a acquired lock a.
-- (priority-donate-multiple) Thread a finished.
 + (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 31.
-  (priority-donate-multiple) Thread a should have just finished.
++ (priority-donate-multiple) Thread a should have just finished.(priority-donate-multiple) Thread a acquired lock a.
+  (priority-donate-multiple) Thread a finished.
+- (priority-donate-multiple) Thread a should have just finished.
++ 
   (priority-donate-multiple) Main thread should have priority 31.  Actual priority: 31.
-- (priority-donate-multiple) end
-+ (priority-donate-multiple)  / TIC / [100] / 
-+ end
+  (priority-donate-multiple) end
 
 OUTPUT FROM tests/threads/priority-donate-multiple:
 
@@ -961,16 +477,19 @@ Executing 'priority-donate-multiple':
 (priority-donate-multiple) begin
 (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 31.
 (priority-donate-multiple) Main thread should have priority 33.  Actual priority: 31.
+(priority-donate-multiple) Thread b acquired lock b.
+(priority-donate-multiple) Thread b finished.
 (priority-donate-multiple) Thread b should have just finished.
 (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 31.
-(priority-donate-multiple) Thread a should have just finished.
+(priority-donate-multiple) Thread a should have just finished.(priority-donate-multiple) Thread a acquired lock a.
+(priority-donate-multiple) Thread a finished.
+
 (priority-donate-multiple) Main thread should have priority 31.  Actual priority: 31.
-(priority-donate-multiple)  / TIC / [100] / 
-end
+(priority-donate-multiple) end
 Execution of 'priority-donate-multiple' complete.
-Timer: 110 ticks
-Thread: 0 idle ticks, 113 kernel ticks, 0 user ticks
-Console: 923 characters output
+Timer: 137 ticks
+Thread: 0 idle ticks, 140 kernel ticks, 0 user ticks
+Console: 1103 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1002,15 +521,13 @@ Differences in `diff -u' format:
 - (priority-donate-multiple2) Thread b finished.
 - (priority-donate-multiple2) Thread a acquired lock a.
 - (priority-donate-multiple2) Thread a finished.
-- (priority-donate-multiple2) Thread c finished.
 + (priority-donate-multiple2) Main thread should have priority 34.  Actual priority: 31.
+  (priority-donate-multiple2) Thread c finished.
 + (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
 + (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
   (priority-donate-multiple2) Threads b, a, c should have just finished, in that order.
   (priority-donate-multiple2) Main thread should have priority 31.  Actual priority: 31.
   (priority-donate-multiple2) end
-+  / TIC / [100] / 
-+ (priority-donate-multiple2) Thread a acquired lock a.(priority-donate-multiple2) Thread c finished.
 
 OUTPUT FROM tests/threads/priority-donate-multiple2:
 
@@ -1025,17 +542,16 @@ Boot complete.
 Executing 'priority-donate-multiple2':
 (priority-donate-multiple2) begin
 (priority-donate-multiple2) Main thread should have priority 34.  Actual priority: 31.
+(priority-donate-multiple2) Thread c finished.
 (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
 (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
 (priority-donate-multiple2) Threads b, a, c should have just finished, in that order.
 (priority-donate-multiple2) Main thread should have priority 31.  Actual priority: 31.
 (priority-donate-multiple2) end
- / TIC / [100] / 
-(priority-donate-multiple2) Thread a acquired lock a.(priority-donate-multiple2) Thread c finished.
 Execution of 'priority-donate-multiple2' complete.
-Timer: 123 ticks
-Thread: 0 idle ticks, 126 kernel ticks, 0 user ticks
-Console: 992 characters output
+Timer: 114 ticks
+Thread: 0 idle ticks, 117 kernel ticks, 0 user ticks
+Console: 921 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1043,7 +559,37 @@ Powering off...
 
 DETAILS OF tests/threads/priority-donate-nest FAILURE:
 
-Run started 'priority-donate-nest' but it never finished
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (priority-donate-nest) begin
+  (priority-donate-nest) Low thread should have priority 32.  Actual priority: 32.
+  (priority-donate-nest) Low thread should have priority 33.  Actual priority: 33.
+  (priority-donate-nest) Medium thread should have priority 33.  Actual priority: 33.
+  (priority-donate-nest) Medium thread got the lock.
+  (priority-donate-nest) High thread got the lock.
+  (priority-donate-nest) High thread finished.
+  (priority-donate-nest) High thread should have just finished.
+  (priority-donate-nest) Middle thread finished.
+  (priority-donate-nest) Medium thread should just have finished.
+  (priority-donate-nest) Low thread should have priority 31.  Actual priority: 31.
+  (priority-donate-nest) end
+Differences in `diff -u' format:
+  (priority-donate-nest) begin
+- (priority-donate-nest) Low thread should have priority 32.  Actual priority: 32.
+- (priority-donate-nest) Low thread should have priority 33.  Actual priority: 33.
+- (priority-donate-nest) Medium thread should have priority 33.  Actual priority: 33.
++ (priority-donate-nest) Low thread should have priority 32.  Actual priority: 31.
++ (priority-donate-nest) Low thread should have priority 33.  Actual priority: 31.
++ (priority-donate-nest) Medium thread should have priority 33.  Actual priority: 32.
+  (priority-donate-nest) Medium thread got the lock.
+  (priority-donate-nest) High thread got the lock.
+  (priority-donate-nest) High thread finished.
+  (priority-donate-nest) High thread should have just finished.
+  (priority-donate-nest) Middle thread finished.
+  (priority-donate-nest) Medium thread should just have finished.
+  (priority-donate-nest) Low thread should have priority 31.  Actual priority: 31.
+  (priority-donate-nest) end
 
 OUTPUT FROM tests/threads/priority-donate-nest:
 
@@ -1061,14 +607,17 @@ Executing 'priority-donate-nest':
 (priority-donate-nest) Low thread should have priority 33.  Actual priority: 31.
 (priority-donate-nest) Medium thread should have priority 33.  Actual priority: 32.
 (priority-donate-nest) Medium thread got the lock.
+(priority-donate-nest) High thread got the lock.
+(priority-donate-nest) High thread finished.
+(priority-donate-nest) High thread should have just finished.
+(priority-donate-nest) Middle thread finished.
 (priority-donate-nest) Medium thread should just have finished.
 (priority-donate-nest) Low thread should have priority 31.  Actual priority: 31.
 (priority-donate-nest) end
-Execution of 'priority-d / TIC / [100] / 
-onate-nest' complete.
-Timer: 106 ticks
-Thread: 0 idle ticks, 109 kernel ticks, 0 user ticks
-Console: 875 characters output
+Execution of 'priority-donate-nest' complete.
+Timer: 133 ticks
+Thread: 0 idle ticks, 136 kernel ticks, 0 user ticks
+Console: 1060 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1158,17 +707,17 @@ Differences in `diff -u' format:
 + (priority-donate-chain) main should have priority 3.  Actual priority: 0.
   (priority-donate-chain) interloper 1 finished.
 + (priority-donate-chain) main should have priority 6.  Actual priority: 0.
-+ (priority-donate-chain) main should have priority 9.  Actual priority: 0.
 + (priority-donate-chain) interloper 2 finished.
++ (priority-donate-chain) main should have priority 9.  Actual priority: 0.
 + (priority-donate-chain) interloper 3 finished.
-+  / TIC / [100] / 
 + (priority-donate-chain) main should have priority 12.  Actual priority: 0.
 + (priority-donate-chain) interloper 4 finished.
 + (priority-donate-chain) main should have priority 15.  Actual priority: 0.
-+ (priority-donate-chain) main should have priority 18.  Actual priority: 0.
 + (priority-donate-chain) interloper 5 finished.
++ (priority-donate-chain) main should have priority 18.  Actual priority: 0.
 + (priority-donate-chain) interloper 6 finished.
 + (priority-donate-chain) main should have priority 21.  Actual priority: 0.
++ (priority-donate-chain) interloper 7 finished.
   (priority-donate-chain) main finishing with priority 0.
   (priority-donate-chain) end
 
@@ -1188,24 +737,23 @@ Executing 'priority-donate-chain':
 (priority-donate-chain) main should have priority 3.  Actual priority: 0.
 (priority-donate-chain) interloper 1 finished.
 (priority-donate-chain) main should have priority 6.  Actual priority: 0.
-(priority-donate-chain) main should have priority 9.  Actual priority: 0.
 (priority-donate-chain) interloper 2 finished.
+(priority-donate-chain) main should have priority 9.  Actual priority: 0.
 (priority-donate-chain) interloper 3 finished.
- / TIC / [100] / 
 (priority-donate-chain) main should have priority 12.  Actual priority: 0.
 (priority-donate-chain) interloper 4 finished.
 (priority-donate-chain) main should have priority 15.  Actual priority: 0.
-(priority-donate-chain) main should have priority 18.  Actual priority: 0.
 (priority-donate-chain) interloper 5 finished.
+(priority-donate-chain) main should have priority 18.  Actual priority: 0.
 (priority-donate-chain) interloper 6 finished.
 (priority-donate-chain) main should have priority 21.  Actual priority: 0.
+(priority-donate-chain) interloper 7 finished.
 (priority-donate-chain) main finishing with priority 0.
 (priority-donate-chain) end
 Execution of 'priority-donate-chain' complete.
-Timer: 195 ticks
-Thread: 0 idle  / TIC / [200] / 
-ticks, 198 kernel ticks, 0 user ticks
-Console: 1355 characters output
+Timer: 200 ticks
+Thread: 0 idle ticks, 203 kernel ticks, 0 user ticks
+Console: 1366 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1228,11 +776,11 @@ Acceptable output:
 Differences in `diff -u' format:
   (priority-donate-sema) begin
   (priority-donate-sema) Thread L acquired lock.
-  (priority-donate-sema) Thread L downed semaphore.
+- (priority-donate-sema) Thread L downed semaphore.
 - (priority-donate-sema) Thread H acquired lock.
 - (priority-donate-sema) Thread H finished.
 - (priority-donate-sema) Thread M finished.
-  (priority-donate-sema) Thread L finished.
+- (priority-donate-sema) Thread L finished.
   (priority-donate-sema) Main thread finished.
   (priority-donate-sema) end
 
@@ -1249,14 +797,12 @@ Boot complete.
 Executing 'priority-donate-sema':
 (priority-donate-sema) begin
 (priority-donate-sema) Thread L acquired lock.
-(priority-donate-sema) Thread L downed semaphore.
-(priority-donate-sema) Thread L finished.
 (priority-donate-sema) Main thread finished.
 (priority-donate-sema) end
 Execution of 'priority-donate-sema' complete.
-Timer: 70 ticks
-Thread: 0 idle ticks, 73 kernel ticks, 0 user ticks
-Console: 597 characters output
+Timer: 57 ticks
+Thread: 0 idle ticks, 60 kernel ticks, 0 user ticks
+Console: 505 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -1309,9 +855,8 @@ Executing 'priority-donate-lower':
 (priority-donate-lower) end
 Execution of 'priority-donate-lower' complete.
 Timer: 90 ticks
-Thread: 0 idle ticks, 92 kernel ticks, 0 user ticks
-C / TIC / [100] / 
-onsole: 777 characters output
+Thread: 0 idle ticks, 93 kernel ticks, 0 user ticks
+Console: 777 characters output
 Keyboard: 0 keys pressed
 Powering off...
 

@@ -220,6 +220,11 @@ thread_create (const char *name, int priority,
   /* Add to run queue. */
   thread_unblock (t);
 
+  ////>
+    if(priority > thread_current()->priority)
+      thread_yield();
+  ////<
+
   return tid;
 }
 
@@ -368,6 +373,19 @@ void
 thread_set_priority (int new_priority) 
 {
   thread_current ()->priority = new_priority;
+  //printf("DEB\n");
+  ////>
+  if(!list_empty(&ready_list)) {
+    struct list_elem *e;
+    list_sort(&ready_list, compare_priority, NULL);
+    e=list_front(&ready_list);
+    struct thread *f = list_entry (e, struct thread, elem);
+    if(new_priority < f->priority)
+      thread_yield();
+  }
+  
+
+  ////<
 }
 
 /* Returns the current thread's priority. */
