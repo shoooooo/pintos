@@ -15,16 +15,6 @@
 #include "userprog/process.h"
 #endif
 
-////> NEW IMPLEMENTATION
-
-// static struct list sleep_list;
-
-// struct sleeper {
-
-
-// }
-
-////< NEW IMPLEMENTATION
 
 /* Random value for struct thread's `magic' member.
    Used to detect stack overflow.  See the big comment at the top
@@ -510,6 +500,9 @@ init_thread (struct thread *t, const char *name, int priority)
   strlcpy (t->name, name, sizeof t->name);
   t->stack = (uint8_t *) t + PGSIZE;
   t->priority = priority;
+
+  t->old_priority = -1; ////= NEW IMP
+
   t->magic = THREAD_MAGIC;
   list_push_back (&all_list, &t->allelem);
 }

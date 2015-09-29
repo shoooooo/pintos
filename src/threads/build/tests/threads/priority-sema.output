@@ -30,8 +30,8 @@ Executing 'priority-sema':
 (priority-sema) Back in main thread.
 (priority-sema) end
 Execution of 'priority-sema' complete.
-Timer: 181 ticks
-Thread: 1 idle ticks, 183 kernel ticks, 0 user ticks
+Timer: 183 ticks
+Thread: 1 idle ticks, 185 kernel ticks, 0 user ticks
 Console: 1190 characters output
 Keyboard: 0 keys pressed
 Powering off...

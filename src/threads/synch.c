@@ -41,6 +41,34 @@ static bool compare_priority (const struct list_elem *a, const struct list_elem 
 
 }
 
+
+void donate(struct lock *l) {
+
+  if(l->holder) {
+    struct thread *holder = l->holder;
+    
+    if(holder->priority < thread_current()->priority) {
+      //printf("%s has lock, priority %d / i am %s, priority %d\n", holder->name, holder->priority, thread_current()->name, thread_current()->priority);
+      holder->old_priority = holder->priority;
+      holder->priority = thread_current()->priority;
+
+
+    }
+
+  }
+
+}
+
+void donate_back(struct lock *l) {
+
+  if(thread_current()->old_priority >=0) {
+
+    thread_set_priority(thread_current()->old_priority);
+    thread_current()->old_priority=-1;
+  }
+
+}
+
 ////< NEW IMP
 
 
@@ -225,6 +253,22 @@ lock_acquire (struct lock *lock)
   ASSERT (!intr_context ());
   ASSERT (!lock_held_by_current_thread (lock));
 
+  ////> NEW IMP >>> this made condvar fail
+
+  // if(lock->holder) {
+  //   if(lock->holder->priority < thread_current()->priority) {
+  //   //   lock->holder->priority = thread_current()->priority;
+
+  //   /// DONATION ///
+
+  //   }
+  // }
+
+  donate(lock);
+  
+
+  ////< NEW IMP
+
   sema_down (&lock->semaphore);
   lock->holder = thread_current ();
 }
@@ -259,6 +303,8 @@ lock_release (struct lock *lock)
 {
   ASSERT (lock != NULL);
   ASSERT (lock_held_by_current_thread (lock));
+
+  donate_back(lock); ////= NEW IMP
 
   lock->holder = NULL;
   sema_up (&lock->semaphore);
