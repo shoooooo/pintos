@@ -7,7 +7,7 @@ warning: tests/threads/mlfqs-fair-20 not tested, assuming failure
 warning: tests/threads/mlfqs-nice-2 not tested, assuming failure
 warning: tests/threads/mlfqs-nice-10 not tested, assuming failure
 warning: tests/threads/mlfqs-block not tested, assuming failure
-TOTAL TESTING SCORE: 32.6%
+TOTAL TESTING SCORE: 35.8%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -16,10 +16,10 @@ SUMMARY BY TEST SET
 Test Set                                      Pts Max  % Ttl  % Max
 --------------------------------------------- --- --- ------ ------
 tests/threads/Rubric.alarm                     18/ 18  20.0%/ 20.0%
-tests/threads/Rubric.priority                  12/ 38  12.6%/ 40.0%
+tests/threads/Rubric.priority                  15/ 38  15.8%/ 40.0%
 tests/threads/Rubric.mlfqs                      0/ 37   0.0%/ 40.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                  32.6%/100.0%
+Total                                                  35.8%/100.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -44,7 +44,7 @@ Functionality of priority scheduler (tests/threads/Rubric.priority):
 
 	     3/ 3 tests/threads/priority-fifo
 	     3/ 3 tests/threads/priority-sema
-	  ** 0/ 3 tests/threads/priority-condvar
+	     3/ 3 tests/threads/priority-condvar
 
 	  ** 0/ 3 tests/threads/priority-donate-one
 	  ** 0/ 3 tests/threads/priority-donate-multiple
@@ -55,8 +55,8 @@ Functionality of priority scheduler (tests/threads/Rubric.priority):
 	  ** 0/ 3 tests/threads/priority-donate-lower
 
 	- Section summary.
-	      4/ 12 tests passed
-	     12/ 38 points subtotal
+	      5/ 12 tests passed
+	     15/ 38 points subtotal
 
 Functionality of advanced scheduler (tests/threads/Rubric.mlfqs):
 	  ** 0/ 5 tests/threads/mlfqs-load-1
@@ -77,135 +77,6 @@ Functionality of advanced scheduler (tests/threads/Rubric.mlfqs):
 	      0/  9 tests passed
 	      0/ 37 points subtotal
 
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/threads/priority-condvar FAILURE:
-
-Test output failed to match any acceptable form.
-
-Acceptable output:
-  (priority-condvar) begin
-  (priority-condvar) Thread priority 23 starting.
-  (priority-condvar) Thread priority 22 starting.
-  (priority-condvar) Thread priority 21 starting.
-  (priority-condvar) Thread priority 30 starting.
-  (priority-condvar) Thread priority 29 starting.
-  (priority-condvar) Thread priority 28 starting.
-  (priority-condvar) Thread priority 27 starting.
-  (priority-condvar) Thread priority 26 starting.
-  (priority-condvar) Thread priority 25 starting.
-  (priority-condvar) Thread priority 24 starting.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 30 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 29 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 28 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 27 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 26 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 25 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 24 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 23 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 22 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 21 woke up.
-  (priority-condvar) end
-Differences in `diff -u' format:
-  (priority-condvar) begin
-  (priority-condvar) Thread priority 23 starting.
-  (priority-condvar) Thread priority 22 starting.
-  (priority-condvar) Thread priority 21 starting.
-  (priority-condvar) Thread priority 30 starting.
-  (priority-condvar) Thread priority 29 starting.
-  (priority-condvar) Thread priority 28 starting.
-  (priority-condvar) Thread priority 27 starting.
-  (priority-condvar) Thread priority 26 starting.
-  (priority-condvar) Thread priority 25 starting.
-  (priority-condvar) Thread priority 24 starting.
-  (priority-condvar) Signaling...
-+ (priority-condvar) Thread priority 23 woke up.
-+ (priority-condvar) Signaling...
-+ (priority-condvar) Thread priority 22 woke up.
-+ (priority-condvar) Signaling...
-+ (priority-condvar) Thread priority 21 woke up.
-+ (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 30 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 29 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 28 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 27 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 26 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 25 woke up.
-  (priority-condvar) Signaling...
-  (priority-condvar) Thread priority 24 woke up.
-- (priority-condvar) Signaling...
-- (priority-condvar) Thread priority 23 woke up.
-- (priority-condvar) Signaling...
-- (priority-condvar) Thread priority 22 woke up.
-- (priority-condvar) Signaling...
-- (priority-condvar) Thread priority 21 woke up.
-  (priority-condvar) end
-
-OUTPUT FROM tests/threads/priority-condvar:
-
-PiLo hda1
-Loading........
-Kernel command line: -q run priority-condvar
-Pintos booting with 4,096 kB RAM...
-383 pages available in kernel pool.
-383 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-Boot complete.
-Executing 'priority-condvar':
-(priority-condvar) begin
-(priority-condvar) Thread priority 23 starting.
-(priority-condvar) Thread priority 22 starting.
-(priority-condvar) Thread priority 21 starting.
-(priority-condvar) Thread priority 30 starting.
-(priority-condvar) Thread priority 29 starting.
-(priority-condvar) Thread priority 28 starting.
-(priority-condvar) Thread priority 27 starting.
-(priority-condvar) Thread priority 26 starting.
-(priority-condvar) Thread priority 25 starting.
-(priority-condvar) Thread priority 24 starting.
-(priority-condvar) Signaling...
-(priority-condvar) Thread priority 23 woke up.
-(priority-condvar) Signaling...
-(priority-condvar) Thread priority 22 woke up.
-(priority-condvar) Signaling...
-(priority-condvar) Thread priority 21 woke up.
-(priority-condvar) Signaling...
-(priority-condvar) Thread priority 30 woke up.
-(priority-condvar) Signaling...
-(priority-condvar) Thread priority 29 woke up.
-(priority-condvar) Signaling...
-(priority-condvar) Thread priority 28 woke up.
-(priority-condvar) Signaling...
-(priority-condvar) Thread priority 27 woke up.
-(priority-condvar) Signaling...
-(priority-condvar) Thread priority 26 woke up.
-(priority-condvar) Signaling...
-(priority-condvar) Thread priority 25 woke up.
-(priority-condvar) Signaling...
-(priority-condvar) Thread priority 24 woke up.
-(priority-condvar) end
-Execution of 'priority-condvar' complete.
-Timer: 248 ticks
-Thread: 1 idle ticks, 250 kernel ticks, 0 user ticks
-Console: 1665 characters output
-Keyboard: 0 keys pressed
-Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
