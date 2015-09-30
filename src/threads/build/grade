@@ -7,7 +7,7 @@ warning: tests/threads/mlfqs-fair-20 not tested, assuming failure
 warning: tests/threads/mlfqs-nice-2 not tested, assuming failure
 warning: tests/threads/mlfqs-nice-10 not tested, assuming failure
 warning: tests/threads/mlfqs-block not tested, assuming failure
-TOTAL TESTING SCORE: 42.1%
+TOTAL TESTING SCORE: 53.7%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -16,10 +16,10 @@ SUMMARY BY TEST SET
 Test Set                                      Pts Max  % Ttl  % Max
 --------------------------------------------- --- --- ------ ------
 tests/threads/Rubric.alarm                     18/ 18  20.0%/ 20.0%
-tests/threads/Rubric.priority                  21/ 38  22.1%/ 40.0%
+tests/threads/Rubric.priority                  32/ 38  33.7%/ 40.0%
 tests/threads/Rubric.mlfqs                      0/ 37   0.0%/ 40.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                  42.1%/100.0%
+Total                                                  53.7%/100.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -47,16 +47,16 @@ Functionality of priority scheduler (tests/threads/Rubric.priority):
 	     3/ 3 tests/threads/priority-condvar
 
 	     3/ 3 tests/threads/priority-donate-one
-	  ** 0/ 3 tests/threads/priority-donate-multiple
+	     3/ 3 tests/threads/priority-donate-multiple
 	  ** 0/ 3 tests/threads/priority-donate-multiple2
-	  ** 0/ 3 tests/threads/priority-donate-nest
-	  ** 0/ 5 tests/threads/priority-donate-chain
+	     3/ 3 tests/threads/priority-donate-nest
+	     5/ 5 tests/threads/priority-donate-chain
 	     3/ 3 tests/threads/priority-donate-sema
 	  ** 0/ 3 tests/threads/priority-donate-lower
 
 	- Section summary.
-	      7/ 12 tests passed
-	     21/ 38 points subtotal
+	     10/ 12 tests passed
+	     32/ 38 points subtotal
 
 Functionality of advanced scheduler (tests/threads/Rubric.mlfqs):
 	  ** 0/ 5 tests/threads/mlfqs-load-1
@@ -80,70 +80,6 @@ Functionality of advanced scheduler (tests/threads/Rubric.mlfqs):
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-DETAILS OF tests/threads/priority-donate-multiple FAILURE:
-
-Test output failed to match any acceptable form.
-
-Acceptable output:
-  (priority-donate-multiple) begin
-  (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 32.
-  (priority-donate-multiple) Main thread should have priority 33.  Actual priority: 33.
-  (priority-donate-multiple) Thread b acquired lock b.
-  (priority-donate-multiple) Thread b finished.
-  (priority-donate-multiple) Thread b should have just finished.
-  (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 32.
-  (priority-donate-multiple) Thread a acquired lock a.
-  (priority-donate-multiple) Thread a finished.
-  (priority-donate-multiple) Thread a should have just finished.
-  (priority-donate-multiple) Main thread should have priority 31.  Actual priority: 31.
-  (priority-donate-multiple) end
-Differences in `diff -u' format:
-  (priority-donate-multiple) begin
-  (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 32.
-  (priority-donate-multiple) Main thread should have priority 33.  Actual priority: 33.
-  (priority-donate-multiple) Thread b acquired lock b.
-  (priority-donate-multiple) Thread b finished.
-  (priority-donate-multiple) Thread b should have just finished.
-- (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 32.
-+ (priority-donate-multiple) Main thread should have priority 32.  Actual priority: 31.
-  (priority-donate-multiple) Thread a acquired lock a.
-  (priority-donate-multiple) Thread a finished.
-  (priority-donate-multiple) Thread a should have just finished.
-  (priority-donate-multiple) Main thread should have priority 31.  Actual priority: 31.
-  (priority-donate-multiple) end
-
-OUTPUT FROM tests/threads/priority-donate-multiple:
-
-PiLo hda1
-Loading........
-Kernel command line: -q run priority-donate-multiple
-Pintos booting with 4,096 kB RAM...
-383 pages available in kernel pool.
-383 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-Boot complete.
-Executing 'priority-donate-multiple':
-(priority-donate-multiple) begin
-(priority-donate-multiple) Main thread should have priority 32.  Actual priority: 32.
-(priority-donate-multiple) Main thread should have priority 33.  Actual priority: 33.
-(priority-donate-multiple) Thread b acquired lock b.
-(priority-donate-multiple) Thread b finished.
-(priority-donate-multiple) Thread b should have just finished.
-(priority-donate-multiple) Main thread should have priority 32.  Actual priority: 31.
-(priority-donate-multiple) Thread a acquired lock a.
-(priority-donate-multiple) Thread a finished.
-(priority-donate-multiple) Thread a should have just finished.
-(priority-donate-multiple) Main thread should have priority 31.  Actual priority: 31.
-(priority-donate-multiple) end
-Execution of 'priority-donate-multiple' complete.
-Timer: 136 ticks
-Thread: 1 idle ticks, 138 kernel ticks, 0 user ticks
-Console: 1103 characters output
-Keyboard: 0 keys pressed
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
 DETAILS OF tests/threads/priority-donate-multiple2 FAILURE:
 
 Test output failed to match any acceptable form.
@@ -164,19 +100,19 @@ Acceptable output:
 Differences in `diff -u' format:
   (priority-donate-multiple2) begin
   (priority-donate-multiple2) Main thread should have priority 34.  Actual priority: 34.
-+ (priority-donate-multiple2) Thread c finished.
   (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 36.
 - (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 36.
 - (priority-donate-multiple2) Thread b acquired lock b.
 - (priority-donate-multiple2) Thread b finished.
   (priority-donate-multiple2) Thread a acquired lock a.
   (priority-donate-multiple2) Thread a finished.
-- (priority-donate-multiple2) Thread c finished.
+  (priority-donate-multiple2) Thread c finished.
 + (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
 + (priority-donate-multiple2) Thread b acquired lock b.
 + (priority-donate-multiple2) Thread b finished.
   (priority-donate-multiple2) Threads b, a, c should have just finished, in that order.
-  (priority-donate-multiple2) Main thread should have priority 31.  Actual priority: 31.
+- (priority-donate-multiple2) Main thread should have priority 31.  Actual priority: 31.
++ (priority-donate-multiple2) Main thread should have priority 31.  Actual priority: 34.
   (priority-donate-multiple2) end
 
 OUTPUT FROM tests/threads/priority-donate-multiple2:
@@ -192,247 +128,20 @@ Boot complete.
 Executing 'priority-donate-multiple2':
 (priority-donate-multiple2) begin
 (priority-donate-multiple2) Main thread should have priority 34.  Actual priority: 34.
-(priority-donate-multiple2) Thread c finished.
 (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 36.
 (priority-donate-multiple2) Thread a acquired lock a.
 (priority-donate-multiple2) Thread a finished.
+(priority-donate-multiple2) Thread c finished.
 (priority-donate-multiple2) Main thread should have priority 36.  Actual priority: 31.
 (priority-donate-multiple2) Thread b acquired lock b.
 (priority-donate-multiple2) Thread b finished.
 (priority-donate-multiple2) Threads b, a, c should have just finished, in that order.
-(priority-donate-multiple2) Main thread should have priority 31.  Actual priority: 31.
+(priority-donate-multiple2) Main thread should have priority 31.  Actual priority: 34.
 (priority-donate-multiple2) end
 Execution of 'priority-donate-multiple2' complete.
-Timer: 142 ticks
-Thread: 1 idle ticks, 144 kernel ticks, 0 user ticks
+Timer: 145 ticks
+Thread: 1 idle ticks, 147 kernel ticks, 0 user ticks
 Console: 1123 characters output
-Keyboard: 0 keys pressed
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/threads/priority-donate-nest FAILURE:
-
-Test output failed to match any acceptable form.
-
-Acceptable output:
-  (priority-donate-nest) begin
-  (priority-donate-nest) Low thread should have priority 32.  Actual priority: 32.
-  (priority-donate-nest) Low thread should have priority 33.  Actual priority: 33.
-  (priority-donate-nest) Medium thread should have priority 33.  Actual priority: 33.
-  (priority-donate-nest) Medium thread got the lock.
-  (priority-donate-nest) High thread got the lock.
-  (priority-donate-nest) High thread finished.
-  (priority-donate-nest) High thread should have just finished.
-  (priority-donate-nest) Middle thread finished.
-  (priority-donate-nest) Medium thread should just have finished.
-  (priority-donate-nest) Low thread should have priority 31.  Actual priority: 31.
-  (priority-donate-nest) end
-Differences in `diff -u' format:
-  (priority-donate-nest) begin
-  (priority-donate-nest) Low thread should have priority 32.  Actual priority: 32.
-- (priority-donate-nest) Low thread should have priority 33.  Actual priority: 33.
-+ (priority-donate-nest) Low thread should have priority 33.  Actual priority: 31.
-  (priority-donate-nest) Medium thread should have priority 33.  Actual priority: 33.
-  (priority-donate-nest) Medium thread got the lock.
-  (priority-donate-nest) High thread got the lock.
-  (priority-donate-nest) High thread finished.
-  (priority-donate-nest) High thread should have just finished.
-  (priority-donate-nest) Middle thread finished.
-  (priority-donate-nest) Medium thread should just have finished.
-  (priority-donate-nest) Low thread should have priority 31.  Actual priority: 31.
-  (priority-donate-nest) end
-
-OUTPUT FROM tests/threads/priority-donate-nest:
-
-PiLo hda1
-Loading........
-Kernel command line: -q run priority-donate-nest
-Pintos booting with 4,096 kB RAM...
-383 pages available in kernel pool.
-383 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-Boot complete.
-Executing 'priority-donate-nest':
-(priority-donate-nest) begin
-(priority-donate-nest) Low thread should have priority 32.  Actual priority: 32.
-(priority-donate-nest) Low thread should have priority 33.  Actual priority: 31.
-(priority-donate-nest) Medium thread should have priority 33.  Actual priority: 33.
-(priority-donate-nest) Medium thread got the lock.
-(priority-donate-nest) High thread got the lock.
-(priority-donate-nest) High thread finished.
-(priority-donate-nest) High thread should have just finished.
-(priority-donate-nest) Middle thread finished.
-(priority-donate-nest) Medium thread should just have finished.
-(priority-donate-nest) Low thread should have priority 31.  Actual priority: 31.
-(priority-donate-nest) end
-Execution of 'priority-donate-nest' complete.
-Timer: 133 ticks
-Thread: 1 idle ticks, 135 kernel ticks, 0 user ticks
-Console: 1060 characters output
-Keyboard: 0 keys pressed
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/threads/priority-donate-chain FAILURE:
-
-Test output failed to match any acceptable form.
-
-Acceptable output:
-  (priority-donate-chain) begin
-  (priority-donate-chain) main got lock.
-  (priority-donate-chain) main should have priority 3.  Actual priority: 3.
-  (priority-donate-chain) main should have priority 6.  Actual priority: 6.
-  (priority-donate-chain) main should have priority 9.  Actual priority: 9.
-  (priority-donate-chain) main should have priority 12.  Actual priority: 12.
-  (priority-donate-chain) main should have priority 15.  Actual priority: 15.
-  (priority-donate-chain) main should have priority 18.  Actual priority: 18.
-  (priority-donate-chain) main should have priority 21.  Actual priority: 21.
-  (priority-donate-chain) thread 1 got lock
-  (priority-donate-chain) thread 1 should have priority 21. Actual priority: 21
-  (priority-donate-chain) thread 2 got lock
-  (priority-donate-chain) thread 2 should have priority 21. Actual priority: 21
-  (priority-donate-chain) thread 3 got lock
-  (priority-donate-chain) thread 3 should have priority 21. Actual priority: 21
-  (priority-donate-chain) thread 4 got lock
-  (priority-donate-chain) thread 4 should have priority 21. Actual priority: 21
-  (priority-donate-chain) thread 5 got lock
-  (priority-donate-chain) thread 5 should have priority 21. Actual priority: 21
-  (priority-donate-chain) thread 6 got lock
-  (priority-donate-chain) thread 6 should have priority 21. Actual priority: 21
-  (priority-donate-chain) thread 7 got lock
-  (priority-donate-chain) thread 7 should have priority 21. Actual priority: 21
-  (priority-donate-chain) thread 7 finishing with priority 21.
-  (priority-donate-chain) interloper 7 finished.
-  (priority-donate-chain) thread 6 finishing with priority 18.
-  (priority-donate-chain) interloper 6 finished.
-  (priority-donate-chain) thread 5 finishing with priority 15.
-  (priority-donate-chain) interloper 5 finished.
-  (priority-donate-chain) thread 4 finishing with priority 12.
-  (priority-donate-chain) interloper 4 finished.
-  (priority-donate-chain) thread 3 finishing with priority 9.
-  (priority-donate-chain) interloper 3 finished.
-  (priority-donate-chain) thread 2 finishing with priority 6.
-  (priority-donate-chain) interloper 2 finished.
-  (priority-donate-chain) thread 1 finishing with priority 3.
-  (priority-donate-chain) interloper 1 finished.
-  (priority-donate-chain) main finishing with priority 0.
-  (priority-donate-chain) end
-Differences in `diff -u' format:
-  (priority-donate-chain) begin
-  (priority-donate-chain) main got lock.
-  (priority-donate-chain) main should have priority 3.  Actual priority: 3.
-- (priority-donate-chain) main should have priority 6.  Actual priority: 6.
-- (priority-donate-chain) main should have priority 9.  Actual priority: 9.
-- (priority-donate-chain) main should have priority 12.  Actual priority: 12.
-- (priority-donate-chain) main should have priority 15.  Actual priority: 15.
-- (priority-donate-chain) main should have priority 18.  Actual priority: 18.
-- (priority-donate-chain) main should have priority 21.  Actual priority: 21.
-+ (priority-donate-chain) interloper 1 finished.
-+ (priority-donate-chain) main should have priority 6.  Actual priority: 0.
-+ (priority-donate-chain) interloper 2 finished.
-+ (priority-donate-chain) main should have priority 9.  Actual priority: 0.
-+ (priority-donate-chain) interloper 3 finished.
-+ (priority-donate-chain) main should have priority 12.  Actual priority: 0.
-+ (priority-donate-chain) interloper 4 finished.
-+ (priority-donate-chain) main should have priority 15.  Actual priority: 0.
-+ (priority-donate-chain) interloper 5 finished.
-+ (priority-donate-chain) main should have priority 18.  Actual priority: 0.
-+ (priority-donate-chain) interloper 6 finished.
-+ (priority-donate-chain) main should have priority 21.  Actual priority: 0.
-+ (priority-donate-chain) interloper 7 finished.
-  (priority-donate-chain) thread 1 got lock
-- (priority-donate-chain) thread 1 should have priority 21. Actual priority: 21
-+ (priority-donate-chain) thread 1 should have priority 21. Actual priority: 3
-  (priority-donate-chain) thread 2 got lock
-- (priority-donate-chain) thread 2 should have priority 21. Actual priority: 21
-+ (priority-donate-chain) thread 2 should have priority 21. Actual priority: 6
-  (priority-donate-chain) thread 3 got lock
-- (priority-donate-chain) thread 3 should have priority 21. Actual priority: 21
-+ (priority-donate-chain) thread 3 should have priority 21. Actual priority: 9
-  (priority-donate-chain) thread 4 got lock
-- (priority-donate-chain) thread 4 should have priority 21. Actual priority: 21
-+ (priority-donate-chain) thread 4 should have priority 21. Actual priority: 12
-  (priority-donate-chain) thread 5 got lock
-- (priority-donate-chain) thread 5 should have priority 21. Actual priority: 21
-+ (priority-donate-chain) thread 5 should have priority 21. Actual priority: 15
-  (priority-donate-chain) thread 6 got lock
-- (priority-donate-chain) thread 6 should have priority 21. Actual priority: 21
-+ (priority-donate-chain) thread 6 should have priority 21. Actual priority: 18
-  (priority-donate-chain) thread 7 got lock
-  (priority-donate-chain) thread 7 should have priority 21. Actual priority: 21
-  (priority-donate-chain) thread 7 finishing with priority 21.
-- (priority-donate-chain) interloper 7 finished.
-  (priority-donate-chain) thread 6 finishing with priority 18.
-- (priority-donate-chain) interloper 6 finished.
-  (priority-donate-chain) thread 5 finishing with priority 15.
-- (priority-donate-chain) interloper 5 finished.
-  (priority-donate-chain) thread 4 finishing with priority 12.
-- (priority-donate-chain) interloper 4 finished.
-  (priority-donate-chain) thread 3 finishing with priority 9.
-- (priority-donate-chain) interloper 3 finished.
-  (priority-donate-chain) thread 2 finishing with priority 6.
-- (priority-donate-chain) interloper 2 finished.
-  (priority-donate-chain) thread 1 finishing with priority 3.
-- (priority-donate-chain) interloper 1 finished.
-  (priority-donate-chain) main finishing with priority 0.
-  (priority-donate-chain) end
-
-OUTPUT FROM tests/threads/priority-donate-chain:
-
-PiLo hda1
-Loading........
-Kernel command line: -q run priority-donate-chain
-Pintos booting with 4,096 kB RAM...
-383 pages available in kernel pool.
-383 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-Boot complete.
-Executing 'priority-donate-chain':
-(priority-donate-chain) begin
-(priority-donate-chain) main got lock.
-(priority-donate-chain) main should have priority 3.  Actual priority: 3.
-(priority-donate-chain) interloper 1 finished.
-(priority-donate-chain) main should have priority 6.  Actual priority: 0.
-(priority-donate-chain) interloper 2 finished.
-(priority-donate-chain) main should have priority 9.  Actual priority: 0.
-(priority-donate-chain) interloper 3 finished.
-(priority-donate-chain) main should have priority 12.  Actual priority: 0.
-(priority-donate-chain) interloper 4 finished.
-(priority-donate-chain) main should have priority 15.  Actual priority: 0.
-(priority-donate-chain) interloper 5 finished.
-(priority-donate-chain) main should have priority 18.  Actual priority: 0.
-(priority-donate-chain) interloper 6 finished.
-(priority-donate-chain) main should have priority 21.  Actual priority: 0.
-(priority-donate-chain) interloper 7 finished.
-(priority-donate-chain) thread 1 got lock
-(priority-donate-chain) thread 1 should have priority 21. Actual priority: 3
-(priority-donate-chain) thread 2 got lock
-(priority-donate-chain) thread 2 should have priority 21. Actual priority: 6
-(priority-donate-chain) thread 3 got lock
-(priority-donate-chain) thread 3 should have priority 21. Actual priority: 9
-(priority-donate-chain) thread 4 got lock
-(priority-donate-chain) thread 4 should have priority 21. Actual priority: 12
-(priority-donate-chain) thread 5 got lock
-(priority-donate-chain) thread 5 should have priority 21. Actual priority: 15
-(priority-donate-chain) thread 6 got lock
-(priority-donate-chain) thread 6 should have priority 21. Actual priority: 18
-(priority-donate-chain) thread 7 got lock
-(priority-donate-chain) thread 7 should have priority 21. Actual priority: 21
-(priority-donate-chain) thread 7 finishing with priority 21.
-(priority-donate-chain) thread 6 finishing with priority 18.
-(priority-donate-chain) thread 5 finishing with priority 15.
-(priority-donate-chain) thread 4 finishing with priority 12.
-(priority-donate-chain) thread 3 finishing with priority 9.
-(priority-donate-chain) thread 2 finishing with priority 6.
-(priority-donate-chain) thread 1 finishing with priority 3.
-(priority-donate-chain) main finishing with priority 0.
-(priority-donate-chain) end
-Execution of 'priority-donate-chain' complete.
-Timer: 375 ticks
-Thread: 1 idle ticks, 377 kernel ticks, 0 user ticks
-Console: 2627 characters output
 Keyboard: 0 keys pressed
 Powering off...
 
@@ -461,7 +170,8 @@ Differences in `diff -u' format:
   (priority-donate-lower) acquire: got the lock
   (priority-donate-lower) acquire: done
   (priority-donate-lower) acquire must already have finished.
-  (priority-donate-lower) Main thread should have priority 21.  Actual priority: 21.
+- (priority-donate-lower) Main thread should have priority 21.  Actual priority: 21.
++ (priority-donate-lower) Main thread should have priority 21.  Actual priority: 31.
   (priority-donate-lower) end
 
 OUTPUT FROM tests/threads/priority-donate-lower:
@@ -482,11 +192,11 @@ Executing 'priority-donate-lower':
 (priority-donate-lower) acquire: got the lock
 (priority-donate-lower) acquire: done
 (priority-donate-lower) acquire must already have finished.
-(priority-donate-lower) Main thread should have priority 21.  Actual priority: 21.
+(priority-donate-lower) Main thread should have priority 21.  Actual priority: 31.
 (priority-donate-lower) end
 Execution of 'priority-donate-lower' complete.
-Timer: 102 ticks
-Thread: 1 idle ticks, 104 kernel ticks, 0 user ticks
+Timer: 104 ticks
+Thread: 1 idle ticks, 106 kernel ticks, 0 user ticks
 Console: 863 characters output
 Keyboard: 0 keys pressed
 Powering off...
