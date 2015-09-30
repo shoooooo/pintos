@@ -41,31 +41,291 @@ static bool compare_priority (const struct list_elem *a, const struct list_elem 
 
 }
 
+static struct list donations; ////= NEW IMP
+static int donations_flag = -1;
+
+////> NEW IMP
+
+struct donation_elem {
+
+  struct lock *lock;
+  int low_priority;
+  struct thread * donate_to;
+  struct thread * donate_by;
+  
+
+  struct list_elem elem;
+
+};
+
+////<
+
+
+
+struct donation_elem a_donation_elem;
 
 void donate(struct lock *l) {
+
+  /*
+
+  if(donations_flag<0) {
+    list_init(&donations);
+    donations_flag=1;
+  }
 
   if(l->holder) {
     struct thread *holder = l->holder;
     
     if(holder->priority < thread_current()->priority) {
-      //printf("%s has lock, priority %d / i am %s, priority %d\n", holder->name, holder->priority, thread_current()->name, thread_current()->priority);
+      //printf("  >> %s has lock, priority %d / i am %s, priority %d\n", holder->name, holder->priority, thread_current()->name, thread_current()->priority);
+      //holder->old_priority = holder->priority;
+      //holder->priority = thread_current()->priority;
+      struct donation_elem *de = malloc(sizeof(a_donation_elem));
+      ASSERT(de);
+
+      de->lock = l;
+      //de->low_priority = holder->priority;
+      de->low_priority = holder->priority;
+      de->donate_to = holder;
+      de->donate_by = thread_current();
       holder->old_priority = holder->priority;
       holder->priority = thread_current()->priority;
 
+      list_push_back(&donations, &de->elem);
+
+      struct list_elem *e;
+
+      for (e = list_begin (&donations); e != list_end (&donations);
+           e = list_next (e))
+        {
+
+          struct donation_elem *f = list_entry (e, struct donation_elem, elem);
+
+          if(f->donate_by == de->donate_to) { ///2nd donation
+            f->donate_to->priority=thread_current()->priority;
+
+          }
+
+          
+        }
 
     }
 
   }
 
+  */
+
+  /// RETRY ///
+
+  if(donations_flag<0) {
+    list_init(&donations);
+    donations_flag=1;
+    printf("  >> donation inited\n");
+  }
+
+  if(l->holder) {
+
+    if(l->holder->priority < thread_current()->priority) {
+      struct donation_elem *de = malloc(sizeof(a_donation_elem));
+      
+      if(de==NULL) {
+        printf("  >> malloc failed\n");
+        return;
+      }
+
+
+      ASSERT(de);
+
+      de->lock = l;
+      de->donate_by = thread_current();
+      de->donate_to = l->holder;
+      de->low_priority = l->holder->priority;
+      l->holder->old_priority = l->holder->priority;
+      l->holder->priority = thread_current()->priority;
+
+      list_push_back(&donations, &de->elem);
+
+      struct list_elem *e;
+      for (e = list_begin (&donations); e != list_end (&donations); e = list_next (e)) {
+        struct donation_elem *f = list_entry (e, struct donation_elem, elem);
+
+        if(f->donate_by == de->donate_to) {
+
+          //donate(&f->lock);
+
+
+        }
+
+
+
+
+      }
+
+    }
+
+  }
+
+
+
 }
 
 void donate_back(struct lock *l) {
 
-  if(thread_current()->old_priority >=0) {
+  // if(thread_current()->old_priority >=0) {
 
-    thread_set_priority(thread_current()->old_priority);
-    thread_current()->old_priority=-1;
+  //   thread_set_priority(thread_current()->old_priority);
+  //   thread_current()->old_priority=-1;
+  // }
+
+
+  /*
+
+  if(!list_empty(&donations)) {
+    struct list_elem *e;
+    struct donation_elem *de;
+    struct thread *maximum_holder;
+    int maximum_old_priority = -1;
+      //printf("%s donates back\n", thread_current()->name);
+      for (e = list_begin (&donations); e != list_end (&donations);
+           e = list_next (e))
+        {
+
+          struct donation_elem *f = list_entry (e, struct donation_elem, elem);
+
+
+          if(f->low_priority > maximum_old_priority) {
+            maximum_holder = f;
+
+          }
+          
+          if(f->lock == l) {
+            printf("  >> gotit, with %d, while max yet %d\n", f->low_priority, maximum_old_priority);
+            if(f->low_priority > maximum_old_priority) {
+              maximum_old_priority = f->low_priority;
+              de=f;
+
+            }
+            
+
+          }
+
+          
+        }
+        if(maximum_old_priority >=0 && l->holder == thread_current()) {
+          printf("  >> 5 debug");
+            if(maximum_holder == de) {
+              
+              //thread_set_priority(de->old_priority);
+              if(l->holder->old_priority < de->low_priority) {
+                de->donate_to->priority = l->holder->old_priority; // this makes 2 pass
+                //de->donate_to->priority = de->low_priority; // this makes 1 pass
+                printf("  >> 1 [%s]'s priority falling to %d, to its target [%s]\n", de->donate_to->name, l->holder->old_priority, de->donate_by->name);
+
+              }
+              else {
+
+               //de->donate_to->priority = de->low_priority; /////
+                de->donate_to->priority = de->low_priority;
+                printf("  >> 2 [%s]'s priority falling to %d, to lock cond [%s]\n", de->donate_to->name, de->low_priority, de->donate_by->name);
+              }
+            }
+            else {
+
+              printf("  >> 4 debug\n");
+              if(l->holder->old_priority > de->low_priority) {
+                l->holder->old_priority = de->low_priority;
+                printf("  >> 3 [%s]'s priority not falling but target to %d, to before [%s]\n", de->donate_to->name, de->low_priority, de->donate_by->name);
+              }
+            }
+            list_remove(&de->elem);
+          }
+
   }
+
+  */
+   /* RETRY */
+
+
+  if(list_empty(&donations)) return;
+
+  struct list_elem *e;
+  struct donation_elem *de;
+
+  //int lock_count = 0;
+
+  for (e = list_begin (&donations); e != list_end (&donations); e = list_next (e)) {
+    struct donation_elem *f = list_entry (e, struct donation_elem, elem);
+
+    //if(f->donate_to == thread_current()) lock_count++;
+    if(f->lock == l) de=f;
+
+
+  }
+
+  //ASSERT(lock_count);
+
+  if(de!=NULL /*&& lock_count == 1*/) {
+    //printf("  >> case 1 - [%s] priority back from [%d] to [%d]\n", thread_current()->name, thread_current()->priority, thread_current()->old_priority);
+    thread_current()->priority = thread_current()->old_priority;
+    list_remove (&de->elem);
+    free(de);
+
+  }
+/*
+  else if (de!= NULL && lock_count > 1){
+    printf("  >> case 2\n");
+
+    struct donation_elem *max_donation = NULL;
+
+    for (e = list_begin (&donations); e != list_end (&donations); e = list_next (e)) {
+      struct donation_elem *f = list_entry (e, struct donation_elem, elem);
+
+      if(f->donate_to == thread_current()) {
+
+        if(max_donation == NULL) {
+          max_donation = f;
+         }
+
+        if(max_donation->donate_by->priority < f->donate_by->priority) {
+          max_donation = f;
+
+        }
+
+       }
+
+
+    }
+
+    if(max_donation != de) {
+      printf("  >> case 2-1 - [%s] priority target back from [%d] to [%d]\n", thread_current()->name, thread_current()->old_priority, de->low_priority);
+
+      thread_current()->old_priority = de->low_priority;
+
+    }
+    else {
+      printf("  >> case 2-2 - [%s] priority back from [%d] to [%d]\n", thread_current()->name, thread_current()->priority, de->low_priority);
+      thread_current()->priority = de->low_priority;
+
+
+    } 
+
+    list_remove(&de->elem);
+    
+  } */
+  
+
+  
+  //list_remove(&de->elem);
+
+  // for (e = list_begin (&donations); e != list_end (&donations); e = list_next (e)) {
+  //   struct donation_elem *f = list_entry (e, struct donation_elem, elem);
+
+  //   if(f->lock == l)
+  //     list_remove(f->elem);
+
+
+  // }
+
 
 }
 
@@ -264,7 +524,7 @@ lock_acquire (struct lock *lock)
   //   }
   // }
 
-  donate(lock);
+  //donate(lock);
   
 
   ////< NEW IMP

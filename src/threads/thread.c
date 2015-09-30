@@ -29,6 +29,8 @@ static struct list ready_list;
    when they are first scheduled and removed when they exit. */
 static struct list all_list;
 
+
+
 /* Idle thread. */
 static struct thread *idle_thread;
 
@@ -210,10 +212,13 @@ thread_create (const char *name, int priority,
   /* Add to run queue. */
   thread_unblock (t);
 
-  ////>
+  ////> NEW IMP
+
+
+
     if(priority > thread_current()->priority)
       thread_yield();
-  ////<
+  ////< NEW IMP
 
   return tid;
 }
@@ -501,7 +506,10 @@ init_thread (struct thread *t, const char *name, int priority)
   t->stack = (uint8_t *) t + PGSIZE;
   t->priority = priority;
 
-  t->old_priority = -1; ////= NEW IMP
+
+  t->old_priority = priority; ////= NEW IMP
+  list_init(&t->lock_keys);
+  //list_init(&t->donations);
 
   t->magic = THREAD_MAGIC;
   list_push_back (&all_list, &t->allelem);
